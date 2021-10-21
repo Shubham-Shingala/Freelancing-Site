@@ -1,0 +1,75 @@
+/* Base */
+@import '~@angular/material/prebuilt-themes/indigo-pink.css';
+@import url("https://fonts.googleapis.com/icon?family=Material+Icons");
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+html{
+    scroll-behavior: smooth;
+}
+
+/* google fonts 
+font-family: 'Andada Pro', serif;
+font-family: 'Hahmlet', serif;
+font-family: 'Sora', sans-serif;
+*/
+
+/* Navbar */
+#navigation_bar{
+    width: 85%;
+    margin: auto;
+}
+
+.container-fluid .navbar-brand{
+    font-family: 'Sora', sans-serif;
+    font-weight: 700;
+    font-size: 2rem;
+    color: green;
+}
+
+.container-fluid .nav-link{
+    font-family: 'Hahmlet', serif;
+    font-size: 1.2rem;
+    font-weight: 400;
+    color: black;
+}
+
+.container-fluid .nav-link:hover{
+    color: green;
+    background-color: white;
+    border: solid 2px green;
+    border-radius: 10px;
+}
+
+.nav-item{
+    padding: 5px 5px;
+}
+
+.dropdown:hover .dropdown-menu{
+    display: block;
+}
+
+.dropdown-menu{
+    display: none;
+    line-height: 1.9rem;
+}
+
+.navbar-toggler-icon{
+    background: url(../src/assets/images/hamburger-menu-icon-png-white-18.jpg);
+}
+
+#navigation_bar hr{
+    margin: 0px 0px;
+}
+
+/* Home */
+.custom-img{
+    width: 100%;
+    height: 660px;
+    border-style: groove; 
+}
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

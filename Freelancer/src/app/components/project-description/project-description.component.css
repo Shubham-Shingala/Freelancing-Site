@@ -1,0 +1,45 @@
+
+.card{
+    box-shadow: 0 0 4px 0 rgb(0 0 0 / 8%);
+    width:90%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 14px;
+}
+.projectDetails{
+    display: inline;
+    
+}
+.card-title{
+    font-weight: 500;
+    font-size: 25px;
+}
+.projectBudget{
+    float: right;
+    font-size: 18px;
+    font-weight: 500;
+}
+.card-text{
+    width: 80%;
+}
+.projectCategoryLabel{
+    font-size: larger;
+    font-weight: 500;
+}
+.projectCategory{
+    font-size: 14px;
+    margin-top: 7px;
+}
+.projectDuration{
+    float: right;
+    font-size: 18px;
+}
+.bidFormInput{
+    display: inline;
+}
+
+textarea{
+    resize: none;
+    height: 50px;
+    width: 90%;
+}

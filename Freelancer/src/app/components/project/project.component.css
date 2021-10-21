@@ -1,0 +1,32 @@
+.rootOfPage{
+    background-color: rgb(241, 241, 241);
+}
+.card-title{
+    color: rgb(128, 128, 252);
+    font-weight: bold;
+    font-size: 20px;
+    width: 80%;
+}
+.budget{
+    font-weight: 500;
+    font-size: large;
+    float: right;
+}
+.desc{
+    width:80%
+}
+.bottomOfCard{
+    display: inline;
+    font-size: 16px;
+}
+
+.card{
+    width: 90% !important;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.card:hover{
+    background-color: rgb(243, 242, 242);
+    cursor: pointer;
+}

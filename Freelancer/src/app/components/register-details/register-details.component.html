@@ -1,0 +1,63 @@
+<h1>Complete your free account setup</h1>
+{{email}}
+<div class="alert alert-danger" *ngIf="errorMessage" role="alert">
+  {{errorMessage}}
+</div>
+<form [formGroup]="RegisterForm" (ngSubmit)="onSubmit()" >
+    <div class="mb-3">
+      <mat-form-field appearance="standard">
+        <mat-label>FirstName</mat-label>
+        <input
+          type="text"
+          matInput
+          formControlName="fControl"
+          placeholder="Ex. test"
+        />
+        <mat-error *ngIf="fname?.hasError('required')">
+          FirstName is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+    </div>
+    <div class="mb-3">
+      <mat-form-field appearance="standard">
+        <mat-label>LastName</mat-label>
+        <input
+          type="text"
+          matInput
+          formControlName="lControl"
+          placeholder="Ex. test"
+        />
+        <mat-error *ngIf="lname?.hasError('required')">
+          LastName is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+      </div>
+      <div class="mb-3">
+        <mat-form-field appearance="standard">
+          <mat-label>Enter your password</mat-label>
+          <input matInput [type]="hide ? 'password' : 'text'" formControlName="passwordControl">
+          <a class="text-decoration-none" style="color: black;cursor: pointer;" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+          </a>
+          <mat-error *ngIf="password?.hasError('required')">
+            Password is <strong>required</strong>
+          </mat-error>
+          <mat-error *ngIf="password?.hasError('pattern')">
+            password must be 8 characters including one uppercase letter, one special character and alphanumeric characters.
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="mb-3">
+        <mat-radio-group aria-label="Select an option" formControlName="roleControl">
+          <mat-radio-button value="buyer">Hire for a project</mat-radio-button>
+          &nbsp;<mat-radio-button value="freelancer">Work as freelancer</mat-radio-button>
+          <div *ngIf="(role?.invalid && role?.touched)">
+          <mat-error *ngIf="role?.hasError('required')">
+            Please select what you want to do on Freelancer.
+          </mat-error>
+        </div>
+        </mat-radio-group>
+      </div>
+    <button type="submit" class="btn btn-primary">Sign Up</button>
+</form>
+<a href="/login" class="btn btn-link text-decoration-none">Already have an Account?</a>

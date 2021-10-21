@@ -1,0 +1,152 @@
+<div class="card" style="width: 18rem;">
+  
+    <div class="imgBox">
+  <img [src]="imageUrl" class="card-img-top profileImg">
+      <div class="uploadBtn">
+        <form [formGroup]="profileForm">
+        <input type="file" formControlName="uploadFile" (change)="onFileSelected($event)" style="display: none;" #fileUpload>
+        <a (click)="fileUpload.click()">  <i  class="fa fa-camera fa-3x"></i></a>
+      </form>
+      </div>
+    </div>
+  <div class="card-body">
+    <h2 class="card-title">{{username}}</h2>
+    <div class="card-text">
+      <div style="display: inline;">Member Since:</div>
+      <div style="font-weight: bold; float: right;display: inline;">{{registerUserDate}}</div>
+      <br>
+      <hr>
+      <br>
+      <div style="display: inline;">
+        <span style="font-weight: bold;">Description</span>
+        <span style="float: right;"><a style="cursor: pointer;" class="link-primary" (click)="showDescriptionBox()">Edit
+            description</a></span>
+      </div>
+      <div>
+        {{description}}
+        <form *ngIf="showDesc" [formGroup]="descriptionForm">
+          <textarea style="width: 100%;height: 100px;"
+            placeholder="Please tell us about any hobbies, additional expertise, or anything else you’d like to add."
+            formControlName="descriptionControl"></textarea>
+          <br>
+          <button (click)="cancelDesc()" class="btn btn-light btn-lg">Cancel</button>
+          <button style="float: right;" (click)="submitDescription()" class="btn btn-success btn-lg">update</button>
+        </form>
+      </div>
+      <br>
+      <hr>
+      <br>
+      <div style="display: inline;">
+        <span style="font-weight: bold;">Education</span>
+        <span style="float: right;"><a style="cursor: pointer;" class="link-primary" (click)="showEduBox()">Add new</a>
+        </span>
+      </div>
+      <div>
+        {{userDegree}} - {{userBranch}}<br>
+        <span style="font-weight: lighter;" >{{userCollege}}, {{userCollegeCountry}}, Graduated {{userYearOfGraduation}}
+        </span>
+          <form *ngIf="showEdu" [formGroup]="educationForm">
+          <select class="country">
+            <option value="0" class="hidden">Country of College/University</option>
+            <option formControlName="collegeCountryControl" value="India">India</option>
+          </select>
+          <br>
+          <input type="text" placeholder="College/University Name" formControlName="collegeControl">
+          <br>
+          <select formControlName="degreeControl">
+            <option value="" class="hidden">Degree</option>
+            <option value="associate">Associate</option>
+            <option value="certificate">Certificate</option>
+            <option value="ba">B.A.</option>
+            <option value="barch">BArch</option>
+            <option value="bm">BM</option>
+            <option value="bfa">BFA</option>
+            <option value="bsc">B.Sc.</option>
+            <option value="ma">M.A.</option>
+            <option value="mba">M.B.A.</option>
+            <option value="mfa">MFA</option>
+            <option value="msc">M.Sc.</option>
+            <option value="jd">J.D.</option>
+            <option value="md">M.D.</option>
+            <option value="phd">Ph.D</option>
+            <option value="llb">LLB</option>
+            <option value="llm">LLM</option>
+            <option value="other">Other</option>
+          </select>
+          <input type="text" placeholder="Branch" formControlName="branchControl">
+          <select formControlName="yearControl">
+            <option value="" class="hidden">Year of graduation</option>
+            <option value="2021">2021</option>
+            <option value="2020">2020</option>
+            <option value="2019">2019</option>
+            <option value="2018">2018</option>
+            <option value="2017">2017</option>
+            <option value="2016">2016</option>
+            <option value="2015">2015</option>
+            <option value="2014">2014</option>
+            <option value="2013">2013</option>
+            <option value="2012">2012</option>
+            <option value="2011">2011</option>
+            <option value="2010">2010</option>
+            <option value="2009">2009</option>
+            <option value="2008">2008</option>
+            <option value="2007">2007</option>
+            <option value="2006">2006</option>
+            <option value="2005">2005</option>
+            <option value="2004">2004</option>
+            <option value="2003">2003</option>
+            <option value="2002">2002</option>
+            <option value="2001">2001</option>
+          </select><br>
+          <button (click)="cancelEdu()" class="btn btn-light btn-lg">Cancel</button>
+          <button style="float: right;" (click)="submitEducation()" class="btn btn-success btn-lg">update</button>
+        </form>
+      </div>
+      <br>
+      <hr>
+      <br>
+      <div style="display: inline;">
+        <span style="font-weight: bold;">Certification</span>
+        <span style="float: right;"><a style="cursor: pointer;" class="link-primary" (click)="showCertificateBox()">Add new</a>
+        </span>
+      </div>
+      <div>
+        {{userCertificate}}<br>
+        <span style="font-weight: lighter;" >{{userCertificateFrom}}, {{userCertificateYear}}
+        </span>
+          <form *ngIf="showCerti" [formGroup]="certificateForm">
+          <input type="text" placeholder="Certificate of Award" formControlName="certificateControl">
+          <input type="text" placeholder="Certificate From(E. X. Google)" formControlName="certificateFromControl">
+          <br>
+          <select formControlName="certificateYearControl">
+            <option value="" class="hidden">Year</option>
+            <option value="2021">2021</option>
+            <option value="2020">2020</option>
+            <option value="2019">2019</option>
+            <option value="2018">2018</option>
+            <option value="2017">2017</option>
+            <option value="2016">2016</option>
+            <option value="2015">2015</option>
+            <option value="2014">2014</option>
+            <option value="2013">2013</option>
+            <option value="2012">2012</option>
+            <option value="2011">2011</option>
+            <option value="2010">2010</option>
+            <option value="2009">2009</option>
+            <option value="2008">2008</option>
+            <option value="2007">2007</option>
+            <option value="2006">2006</option>
+            <option value="2005">2005</option>
+            <option value="2004">2004</option>
+            <option value="2003">2003</option>
+            <option value="2002">2002</option>
+            <option value="2001">2001</option>
+          </select><br>
+            <button (click)="cancelCerti()" class="btn btn-light btn-lg">Cancel</button>
+          <button style="float: right;" (click)="submitCertificate()" class="btn btn-success btn-lg">update</button>
+        </form>
+      </div>
+      <div>
+    </div>
+  </div>
+</div>

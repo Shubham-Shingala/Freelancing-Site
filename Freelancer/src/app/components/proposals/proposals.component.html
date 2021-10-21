@@ -1,0 +1,15 @@
+<div class="card" *ngFor="let bid of bids">
+    <div class="card-body">
+      <div class="userDetails">
+      <img class="bidUserImg" [src]="'../../../assets/uploads/'+bid.BidUser.profileImg">
+      <span class="userName">&nbsp;&nbsp;{{bid.BidUser.FirstName}} {{bid.BidUser.LastName}}
+      </span>
+        <span class="userEmail">&nbsp;{{bid.BidUser.Email}}</span>
+        <span class="bidAmount">₹{{bid.BidAmount}} INR</span>
+        <br>
+        <span class="deliverDays">in {{bid.DeliveredDays}} days</span>
+        <button (click)="hireFreelacer(bid.BidUser._id)">hire</button>
+    </div>
+      <p class="card-text">{{bid.Proposal}}</p>
+    </div>
+  </div>

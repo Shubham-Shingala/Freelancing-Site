@@ -1,0 +1,47 @@
+<h1>Login User</h1>
+<div class="alert alert-danger" *ngIf="errorMessage" role="alert">
+    {{errorMessage}}
+  </div>
+<form [formGroup]="LoginForm" (ngSubmit)="onSubmit()" >
+    <div class="mb-3">
+        <mat-form-field appearance="standard">
+            <mat-label>Email</mat-label>
+            <input
+              type="email"
+              matInput
+              formControlName="emailControl"
+              placeholder="Ex. test@example.com"
+            />
+            <mat-icon matSuffix>email</mat-icon>
+            <mat-error
+              *ngIf="email?.hasError('email') && !email?.hasError('required')"
+            >
+              Please enter a valid email address
+            </mat-error>
+            <mat-error *ngIf="email?.hasError('required')">
+              Email is <strong>required</strong>
+            </mat-error>
+            <mat-error *ngIf="email?.hasError('pattern')">
+                invalid Email
+              </mat-error>
+          </mat-form-field>
+      <div class="mb-3">
+        <mat-form-field appearance="standard">
+            <mat-label>Enter your password</mat-label>
+            <input matInput [type]="hide ? 'password' : 'text'" formControlName="passwordControl">
+            <a class="text-decoration-none" style="color: black;cursor: pointer;" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+              <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </a>
+            <mat-error *ngIf="password?.hasError('required')">
+              Password is <strong>required</strong>
+            </mat-error>
+            <mat-error *ngIf="password?.hasError('pattern')">
+              password must be 8 characters including one uppercase letter, one special character and alphanumeric characters.
+            </mat-error>
+          </mat-form-field>
+        </div>
+    </div>
+    <button type="submit" class="btn btn-primary">Sign up</button>
+</form>
+<a href="/register" class="btn btn-link text-decoration-none">New User?</a>
+<!-- <a href="/changePassword" class="">change Password</a> -->

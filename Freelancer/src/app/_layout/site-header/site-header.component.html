@@ -1,0 +1,90 @@
+<section id="navigation_bar">
+    <nav class="navbar navbar-expand-lg navbar-custom">
+      <div class="container-fluid">
+        <a class="navbar-brand" [routerLink]="['/']" >Freelancer</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span><i class="fa fa-bars fa-lg"></i></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link" aria-current="page" [routerLink]="['/']" routerLinkActive="['active']"  >Home</a>
+            </li>
+            <li class="nav-item">
+              <a *ngIf="loggedUserRole=='buyer'" class="nav-link" href="/post-project">Post Project</a>
+            </li>
+            <li class="nav-item">
+              <a *ngIf="loggedUserRole=='buyer'" matBadge={{numberOfProject}}  class="nav-link" href="/project">My Project</a>
+            </li>
+            <li class="nav-item">
+              <a *ngIf="loggedUserRole=='freelancer'" href="" class="nav-link">Find Jobs</a>
+            </li>
+            <li class="nav-item">
+              <a href="#how-it-work" class="nav-link">How it Work</a>
+            </li>
+
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href=""
+                id="navbarDropdown"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                Categories
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li>
+                  <a class="dropdown-item" href="#">Development & It</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#">Design & Creative</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#">Sales & Marketing</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#">Writing & Translation</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#"
+                    >Admin & Customer Support</a
+                  >
+                </li>
+                <li></li>
+                <li>
+                  <a class="dropdown-item" href="#">Finance & Accounting</a>
+                </li>
+                <li><a class="dropdown-item" href="#">Music & Audio</a></li>
+                <li>
+                  <a class="dropdown-item" href="#">Programming & Tech</a>
+                </li>
+              </ul>
+            </li>
+
+            <li class="nav-item">
+              <a *ngIf="!loggedUser" [routerLink]="['/login']"  class="btn btn-success">Sign In</a>
+            </li>
+            <li class="nav-item">
+              <a *ngIf="!loggedUser" [routerLink]="['/register']" class="btn btn-success">Sign Up</a>
+            </li>
+            <li class="nav-item">
+              <a href="/profile" class="nav-link"> Hi, {{loggedUserName}}</a>
+            </li>
+            <li class="nav-item">
+              <button *ngIf="loggedUser" (click)="logout()"  class="btn btn-success">logout</button>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </section>

@@ -1,0 +1,16 @@
+.file-input{
+    display: none;
+}
+
+.file-upload{
+    /* background-color: rgb(240, 239, 239); */
+}
+.cancel-upload{
+    display: inline-block;
+}
+.cancel-upload:hover{
+    cursor: pointer;
+}
+.uploadProgress{
+    display: inline-block;
+}

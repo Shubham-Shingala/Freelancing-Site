@@ -1,0 +1,103 @@
+<h1>Tell us what you need done</h1>
+<form [formGroup]="PostProjectForm" enctype="multipart/form-data">
+    <div class="mb-3">
+        <label class="form-label">Choose a name for your project</label>
+        <input type="text" class="form-control" formControlName="projectNameControl">
+        <div *ngIf="projectName?.invalid && (projectName?.dirty || projectName?.touched)">
+            <div class="text-danger" *ngIf="projectName?.errors?.required">
+                project Name is required.
+            </div>
+        </div>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Tell us more about your project</label>
+        <textarea class="form-control" formControlName="descriptionControl"></textarea>
+        <div *ngIf="description?.invalid && (description?.dirty || description?.touched)">
+            <div class="text-danger" *ngIf="description?.errors?.required">
+                description is required.
+            </div>
+        </div>
+    </div>
+    <div class="mb-3">
+        <input type="file" class="file-input" formControlName="fileControl" (change)="onFileSelected($event)" #fileUpload>
+
+        <div class="file-upload">
+
+            {{fileName || "No file uploaded yet."}}
+
+            <button mat-mini-fab color="primary" class="btn btn-primary" (click)="fileUpload.click()">
+                <mat-icon>attach_file</mat-icon>
+
+            </button>
+
+        </div>
+        <div>
+
+            <mat-progress-bar class="uploadProgress" mode="determinate" [value]="uploadProgress" *ngIf="uploadProgress">
+            </mat-progress-bar>
+
+            <mat-icon class="cancel-upload" (click)="cancelUpload()" *ngIf="uploadProgress">close</mat-icon>
+
+        </div>
+    </div>
+    <button (click)="onPanel1()" *ngIf="!panel1" class="btn btn-primary">Next</button>
+    <div *ngIf="panel1">
+        <div class="mb-3">
+            <label class="form-label">Category</label>
+            <select class="form-select" formControlName="categoryControl">
+                <option value="">Select category</option>
+                <option value="Development & It">Development & It</option>
+                <option value="Design & Creative">Design & Creative</option>
+                <option value="Sales & Marketing">Sales & Marketing</option>
+                <option value="Writing & Translation">Writing & Translation</option>
+                <option value="Admin & Customer Support">Admin & Customer Support</option>
+                <option value="Finance & Accounting">Finance & Accounting</option>
+                <option value="Music & Audio">Music & Audio</option>
+                <option value="Programming & Tech">Programming & Tech</option>
+            </select>
+            <div *ngIf="category?.invalid && (category?.dirty || category?.touched)">
+                <div class="text-danger" *ngIf="category?.errors?.required">
+                    Please enter a category.
+                </div>
+            </div>
+        </div>
+        <button (click)="onPanel2()" *ngIf="!panel2" class="btn btn-primary">Next</button>
+        <div *ngIf="panel2">
+            <div class="mb-3">
+                <h4>What is your estimated budget?</h4>
+                <label class="form-label">Minimum enter a budget</label>
+                <input type="number" class="form-control" formControlName="MinBudgetControl">
+                <div *ngIf="minBudget?.invalid && (minBudget?.dirty || minBudget?.touched)">
+                    <div class="text-danger" *ngIf="minBudget?.errors?.required">
+                        Please enter a budget.
+                    </div>
+                    <div class="text-danger" *ngIf="minBudget?.errors?.min">
+                        Minimum budget is 600.
+                    </div>
+                </div>
+                <label class="form-label">Maximum enter a budget</label>
+                <input type="number" class="form-control" formControlName="MaxBudgetControl">
+                <div *ngIf="!maxBudget?.invalid &&(maxBudget?.dirty || maxBudget?.touched)">
+                    <div class="text-danger" *ngIf="PostProjectForm.hasError('budgetError')">
+                        Maximum budget should be greater than or equal to {{minBudget?.value+1}}
+                    </div>
+                </div>
+                <div *ngIf="maxBudget?.invalid &&(maxBudget?.dirty || maxBudget?.touched)">
+                    <div class="text-danger" *ngIf="maxBudget?.errors?.required">
+                        Please enter a budget.
+                    </div>
+                </div>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Duration</label>
+                <input type="number" class="form-control" formControlName="DurationControl">days
+                <div *ngIf="duration?.invalid && (duration?.dirty || duration?.touched)">
+                    <div class="text-danger" *ngIf="duration?.errors?.required">
+                        Please enter a duration.
+                    </div>
+                </div>
+            </div>
+            <button (click)="onSubmit()" class="btn btn-primary">Continue With Email</button>
+        </div>
+    </div>
+</form>

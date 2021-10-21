@@ -1,0 +1,8 @@
+<div class="headerProject">
+    <div class="projectName">{{project?.Name}}</div><br><br>
+    <a class="routerLink" [routerLink]="['/projectDescription/',id,'Details']" routerLinkActive="router-link-active" >Details</a>
+    <a class="routerLink" [routerLink]="['/projectDescription/',id,'Proposals']" routerLinkActive="router-link-active" >Proposals</a>
+</div>
+<div class="rootOfPage">
+<router-outlet></router-outlet>
+</div>
