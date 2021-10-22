@@ -1,0 +1,9 @@
+<h1 *ngIf="error">{{error}}</h1>
+<div *ngIf="!error" class="headerProject">
+    <div class="projectName">{{project?.Name}}</div><br><br>
+    <a class="routerLink" [routerLink]="['/findjobsProjects/',id,'Details']" routerLinkActive="router-link-active" >Details</a>
+    <a class="routerLink" [routerLink]="['/findjobsProjects/',id,'Proposals']" routerLinkActive="router-link-active" >Proposals</a>
+</div>
+<div *ngIf="!error" class="rootOfPage">
+<router-outlet></router-outlet>
+</div>

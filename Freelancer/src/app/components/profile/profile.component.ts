@@ -4,6 +4,7 @@ import { IUser } from 'src/app/models/IUser';
 import {AuthService} from '../../services/auth.service';
 import { v4 as uuidv4 } from 'uuid';
 import { HttpClient, HttpEventType } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-profile',
@@ -28,16 +29,22 @@ export class ProfileComponent implements OnInit {
   public userCertificateFrom:string | null=null;
   public userCertificateYear:number | null=null;
   public imageUrl:string | null=null;
+  public category!:string;
+  public showCat:boolean=false;
   certificateForm!:FormGroup;
   descriptionForm!:FormGroup;
   educationForm!:FormGroup;
   profileForm!:FormGroup;
-  constructor(private authService:AuthService,private http:HttpClient) { }
+  categoryForm!:FormGroup;
+  constructor(private router:Router,private authService:AuthService,private http:HttpClient) { }
 
   ngOnInit(): void {
     this.authService.loggedUser().subscribe(
       (res:any)=>{
       if(res.status=='ok'){
+        if(res.data.Role=='buyer'){
+          this.router.navigateByUrl('/')
+        }
         let temp=res.data.Email.split('@',2);
         this.username=temp[0];
         var userDate=Date.parse(res.data.createdAt);
@@ -54,6 +61,7 @@ export class ProfileComponent implements OnInit {
         this.userCertificateFrom=res.data.CertificateFrom;
         this.userCertificateYear=res.data.YearOfCertificate;
         this.imageUrl="../../../assets/uploads/"+res.data.profileImg;
+        this.category=res.data.Category;
       }
       }
     )
@@ -75,6 +83,27 @@ export class ProfileComponent implements OnInit {
     this.profileForm=new FormGroup({
       uploadFile:new FormControl("")
     })
+    this.categoryForm=new FormGroup({
+      categoryControl:new FormControl("")
+    })
+  }
+  showCategory(){
+    this.showCat=true;
+  }
+  cancelCat(){
+    this.showCat=false;
+  }
+  get cat(){
+    return this.categoryForm.get('categoryControl');
+  }
+  submitCat(){
+    this.showCat=false;
+    var obj={
+      id:this.userId,
+      category:this.cat?.value
+    }
+    this.category=this.cat?.value;
+    this.authService.addCategory(obj).subscribe();
   }
   get descr(){
     return this.descriptionForm.get('descriptionControl');

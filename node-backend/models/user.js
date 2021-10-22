@@ -16,7 +16,8 @@ let User=new schema({
     Certificate:{type:String},
     CertificateFrom:{type:String},
     YearOfCertificate:{type:Number},
-    profileImg:{type:String}
+    profileImg:{type:String},
+    Category:{type:String,default:"none"}
 },{collation:"Users",timestamps: true});
 
 

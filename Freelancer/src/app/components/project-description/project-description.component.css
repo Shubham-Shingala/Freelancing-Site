@@ -6,10 +6,10 @@
     margin-right: auto;
     margin-top: 14px;
     border: groove 2px green;
+    padding: 2%;
 }
 .projectDetails{
     display: inline;
-    
 }
 .card-title{
     font-weight: 500;
@@ -27,10 +27,13 @@
     font-size: larger;
     font-weight: 500;
 }
+
 .projectCategory{
     font-size: 14px;
-    margin-top: 7px;
+    padding: 4px;
 }
+
+
 .projectDuration{
     float: right;
     font-size: 18px;
@@ -43,4 +46,7 @@ textarea{
     resize: none;
     height: 50px;
     width: 90%;
+}
+.fileLink{
+    cursor: pointer;
 }

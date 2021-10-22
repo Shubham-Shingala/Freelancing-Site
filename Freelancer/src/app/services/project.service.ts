@@ -33,4 +33,16 @@ export class ProjectService {
     let url=`${this.baseUri}/updateProjectStatus/`+obj.projectId;
     return this.http.post(url,obj);
   }
+  getProjectsOfCategory(obj:any){
+    let url=`${this.baseUri}/getProjectOfCategory`;
+    return this.http.post(url,obj);
+  }
+  downloadProjectFile(id:string | null){
+    let url=`${this.baseUri}/download/`+id;
+    return this.http.get(url,{responseType: 'blob'});
+  }
+  deleteProject(id:string | null){
+    let url=`${this.baseUri}/delete/`+id;
+    return this.http.delete(url);
+  }
 }

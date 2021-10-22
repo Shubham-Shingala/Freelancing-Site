@@ -16,6 +16,10 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { ProjectDescriptionComponent } from './components/project-description/project-description.component';
 import { ProjectDescHeaderComponent } from './_layout/project-desc-header/project-desc-header.component';
 import { ProposalsComponent } from './components/proposals/proposals.component';
+import { FindJobComponent } from './components/find-job/find-job.component';
+import { FindJobProjectHeaderComponent } from './_layout/find-job-project-header/find-job-project-header.component';
+import { FindJobProjectDescComponent } from './components/find-job-project-desc/find-job-project-desc.component';
+import { FindJobProjectProposalsComponent } from './components/find-job-project-proposals/find-job-project-proposals.component';
 const route:Routes=[
   //site routes goes here
   {
@@ -29,6 +33,11 @@ const route:Routes=[
       {path:'projectDescription/:id',component:ProjectDescHeaderComponent,children:[
         {path:'Details',component:ProjectDescriptionComponent},
         {path:'Proposals',component:ProposalsComponent}
+      ]},
+      {path:'find-jobs',component:FindJobComponent},
+      {path:'findjobsProjects/:id',component:FindJobProjectHeaderComponent,children:[
+        {path:'Details',component:FindJobProjectDescComponent},
+        {path:'Proposals',component:FindJobProjectProposalsComponent}
       ]}
     ],
     canActivate:[AuthGuard]

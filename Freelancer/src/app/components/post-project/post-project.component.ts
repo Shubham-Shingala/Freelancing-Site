@@ -67,10 +67,9 @@ export class PostProjectComponent implements OnInit {
     const file: File = event.target.files[0];
     
     if (file) {
-      this.uniqueFileName=uuidv4()+"_"+this.fileName;
-      let fileExtension = file.name.split('?')[0].split('.').pop();
+      this.uniqueFileName=uuidv4()+"_"+file.name;
       const formData = new FormData();
-      formData.append("file", file,this.uniqueFileName+"."+fileExtension);
+      formData.append("file", file,this.uniqueFileName);
       const upload$ = this.http.post(`${this.baseUri}/projectUpload`, formData, {
         reportProgress: true,
         observe: 'events'

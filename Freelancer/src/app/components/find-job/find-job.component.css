@@ -1,0 +1,50 @@
+.rootOfPage{
+    background-color: rgb(241, 241, 241);
+    padding: 3% 0%;
+}
+.card-title{
+    color: #125312;
+    font-weight: bold;
+    font-size: 20px;
+    width: 80%;
+}
+.budget{
+    font-weight: 500;
+    font-size: large;
+    float: right;
+}
+.desc{
+    width:80%
+}
+.bottomOfCard{
+    display: inline;
+    font-size: 16px;
+}
+
+.card{
+    width: 100% !important;
+    margin: 20px auto;
+    padding: 2%;
+    border: groove 2px green;
+}
+
+.card:hover{
+    /* background-color: rgb(243, 242, 242); */
+    cursor: pointer;
+}
+
+.cat-box{
+    border: groove 2px rgb(241, 241, 241);
+    padding: 8px;
+    border-radius: 20px;
+}
+
+.cat-box:hover{
+    color: white;
+    background: #063d06;
+}
+
+.refresh-btn {
+    margin-left: 75px;
+    margin-bottom: 35px;
+}
