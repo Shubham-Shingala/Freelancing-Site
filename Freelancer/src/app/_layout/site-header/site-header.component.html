@@ -25,7 +25,7 @@
               <a *ngIf="loggedUserRole=='buyer'" matBadge={{numberOfProject}}  class="nav-link" href="/project">My Project</a>
             </li>
             <li class="nav-item">
-              <a *ngIf="loggedUserRole=='freelancer'" href="" class="nav-link">Find Jobs</a>
+              <a *ngIf="loggedUserRole=='freelancer'" [routerLink]="['/find-jobs']" routerLinkActive="active"  class="nav-link">Find Jobs</a>
             </li>
             <li class="nav-item">
               <a href="#how-it-work" class="nav-link">How it Work</a>
@@ -78,10 +78,13 @@
               <a *ngIf="!loggedUser" [routerLink]="['/register']" class="btn btn-success">Sign Up</a>
             </li>
             <li class="nav-item">
-              <a href="/profile" class="nav-link"> Hi, {{loggedUserName}}</a>
+              <a href="/profile" *ngIf="loggedUserRole=='freelancer'" class="nav-link"> Hi, {{loggedUserName}}</a>
             </li>
             <li class="nav-item">
-              <button *ngIf="loggedUser" (click)="logout()"  class="btn btn-success">logout</button>
+              <span class="nav-link" *ngIf="loggedUserRole=='buyer'"> Hi, {{loggedUserName}}</span>
+            </li>
+            <li class="nav-item">
+              <button *ngIf="loggedUser"  (click)="logout()"  class="btn btn-success">logout</button>
             </li>
           </ul>
         </div>

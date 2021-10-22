@@ -1,0 +1,59 @@
+
+<div class="card">
+    <div class="card-body">
+        <div class="projectDetails">
+      <span class="card-title">Project Details</span>
+      <span class="projectBudget"><i class="fas fa-rupee-sign"></i>&nbsp;{{project?.MinBudget}} – {{project?.MaxBudget}} INR</span>
+    </div>
+    <hr>
+      <p class="card-text">{{project?.Description}}</p>
+      <div class="projectDetails">
+      <span class="projectCategoryLabel">Project Category</span>
+      <span class="projectDuration">{{project?.Duration}} Days duration</span>
+    </div>
+      <div class="projectCategory">{{project?.Category}}</div>
+      <span *ngIf="fileName" class="projectCategoryLabel">Attached Document</span><br>
+      <a (click)=download() class="link-primary fileLink">{{fileName}}</a>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-body">
+        <span class="card-title">Place a Bid on this Project</span>
+        <hr>
+        <div class="bidDetails">Bid Details</div>
+        <form [formGroup]="bidForm">
+          <div class="bidFormInput">
+        <mat-form-field appearance="standard" floatLabel="always">
+          <mat-label>Bid Amount</mat-label>
+          <input matInput type="number" formControlName="bidAmountControl" placeholder="Enter Bid Amount">
+          <span matPrefix>₹&nbsp;</span>
+          <mat-error
+                *ngIf="bidAmount?.hasError('required')"
+              >
+              Please enter bid amount
+              </mat-error>
+              
+        </mat-form-field>
+        &nbsp; &nbsp;
+        <mat-form-field appearance="standard" floatLabel="always">
+          <mat-label>This project will be delivered in</mat-label>
+          <input matInput type="number" formControlName="daysControl" placeholder="Enter Number of days">
+          <span matSuffix>Days</span>
+          <mat-error
+                *ngIf="days?.hasError('required')"
+              >
+              Please enter number of days
+              </mat-error>
+        </mat-form-field>
+        
+      </div>
+      <br>
+      <mat-form-field appearance="standard" floatLabel="always">
+        <mat-label>Describe your proposal</mat-label>
+        <textarea matInput formControlName="proposalControl" placeholder="What makes you the best candidate for this project?"></textarea>
+      </mat-form-field>
+      <br>
+      <button (click)="placeBid()" mat-raised-button color="primary">Place Bid</button>
+      </form>
+  </div>
+  

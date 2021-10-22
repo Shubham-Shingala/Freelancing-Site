@@ -31,6 +31,10 @@ import { ProjectDescHeaderComponent } from './_layout/project-desc-header/projec
 import {MatButtonModule} from '@angular/material/button';
 import {MatBadgeModule} from '@angular/material/badge';
 import { ProposalsComponent } from './components/proposals/proposals.component';
+import { FindJobComponent } from './components/find-job/find-job.component';
+import { FindJobProjectDescComponent } from './components/find-job-project-desc/find-job-project-desc.component';
+import { FindJobProjectHeaderComponent } from './_layout/find-job-project-header/find-job-project-header.component';
+import { FindJobProjectProposalsComponent } from './components/find-job-project-proposals/find-job-project-proposals.component';
 
 
 @NgModule({
@@ -53,7 +57,11 @@ import { ProposalsComponent } from './components/proposals/proposals.component';
     ProfileComponent,
     ProjectDescriptionComponent,
     ProjectDescHeaderComponent,
-    ProposalsComponent
+    ProposalsComponent,
+    FindJobComponent,
+    FindJobProjectDescComponent,
+    FindJobProjectHeaderComponent,
+    FindJobProjectProposalsComponent
     ],
   imports: [
     BrowserModule,

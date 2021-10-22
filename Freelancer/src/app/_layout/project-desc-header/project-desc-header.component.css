@@ -3,6 +3,10 @@
     background-color: #0e1724;
     height: 140px;
 }
+.deleteIcon{
+    cursor: pointer;
+    color: rgba(255, 255, 255, 0.973);
+}
 .projectName{
     padding-left: 7%;
     padding-top: 55px;

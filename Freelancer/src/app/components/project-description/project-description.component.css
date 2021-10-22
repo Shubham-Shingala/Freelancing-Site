@@ -43,3 +43,6 @@ textarea{
     height: 50px;
     width: 90%;
 }
+.fileLink{
+    cursor: pointer;
+}

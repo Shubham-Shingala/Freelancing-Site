@@ -1,0 +1,35 @@
+.headerProject{
+    width: 100%;
+    background-color: #0e1724;
+    height: 140px;
+}
+.projectName{
+    padding-left: 7%;
+    padding-top: 55px;
+    color: rgba(255, 255, 255, 0.973);
+    font-weight: bold;
+    font-size: 25px;
+}
+.routerLink{
+    margin-top:1px;
+    color: rgba(255, 255, 255, 0.575);
+    text-decoration: none;
+    margin-left: 7%;
+    font-size: 16px;
+    padding-bottom: 4px;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top:2px;
+}
+.routerLink:hover{
+    color: white;
+    border-bottom: 2px solid white;
+}
+.router-link-active{
+    color: white;
+    border-bottom: 2px solid white;
+}
+.rootOfPage{
+    background-color: rgb(241, 241, 241);
+    padding-top: 14px;
+}

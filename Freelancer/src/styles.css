@@ -35,6 +35,7 @@ font-family: 'Sora', sans-serif;
     font-size: 1.2rem;
     font-weight: 400;
     color: black;
+    padding: 5px;
 }
 
 .container-fluid .nav-link:hover{

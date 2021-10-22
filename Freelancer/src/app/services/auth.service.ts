@@ -74,4 +74,8 @@ export class AuthService {
     let url=`${this.baseUri}/addProfileImg`;
     return this.http.post(url,data);
   }
+  addCategory(data:any){
+    let url=`${this.baseUri}/addCategory`;
+    return this.http.post(url,data);
+  }
 }

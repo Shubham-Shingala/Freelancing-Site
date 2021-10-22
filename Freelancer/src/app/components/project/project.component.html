@@ -1,8 +1,9 @@
 <div class="rootOfPage">
-<div (click)="cardClick(project._id)" *ngFor="let project of projectList" class="card" style="width: 18rem;">
+<div (click)="cardClick(project._id)" *ngFor="let project of projectList" class="card">
     <div class="card-body">
         <div style="display: inline;">
       <span class="card-title">{{project.Name}}</span>
+
       <span class="budget"><i class="fas fa-rupee-sign"></i> {{project.MinBudget}} - {{project.MaxBudget}} INR</span>
     </div>
       <h4 class="card-subtitle mb-2 text-muted">{{project.ProjectPostTime | date: 'MMM d, y, h:mm:ss a'}}</h4>

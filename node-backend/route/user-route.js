@@ -132,6 +132,13 @@ route.post('/addDescription',(req,res)=>{
         }
     })
 })
+route.post('/addCategory',(req,res)=>{
+    user.findByIdAndUpdate(req.body.id,{Category:req.body.category},(err,data)=>{
+        if(err){
+            console.log(err);
+        }
+    })
+})
 
 route.post('/addEducation',(req,res)=>{
     user.findByIdAndUpdate(req.body.id,{

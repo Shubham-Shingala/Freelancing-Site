@@ -12,7 +12,8 @@
       <span class="projectDuration">{{project?.Duration}} Days duration</span>
     </div>
       <div class="projectCategory">{{project?.Category}}</div>
-
+      <span *ngIf="fileName" class="projectCategoryLabel">Attached Document</span><br>
+    <a (click)=download() class="link-primary fileLink">{{fileName}}</a>
     </div>
   </div>
 

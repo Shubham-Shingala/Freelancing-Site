@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { IProject } from 'src/app/models/IProject';
 import { ProjectService } from 'src/app/services/project.service';
 
@@ -11,7 +11,7 @@ import { ProjectService } from 'src/app/services/project.service';
 export class ProjectDescHeaderComponent implements OnInit {
   id!:string | null;
   public project!:IProject;
-  constructor(private route:ActivatedRoute,private projectService:ProjectService) { }
+  constructor(private router:Router,private route:ActivatedRoute,private projectService:ProjectService) { }
 
   ngOnInit(): void {
     this.id = this.route.snapshot.paramMap.get('id')
@@ -23,5 +23,12 @@ export class ProjectDescHeaderComponent implements OnInit {
       }
     )
   }
-
+  deleteProject(){
+    this.projectService.deleteProject(this.id).subscribe(
+      (res:any)=>{
+        if(res.status=='ok')
+        this.router.navigateByUrl('/project');
+      }
+    )
+  }
 }

@@ -24,6 +24,7 @@
       </div>
       <div>
         {{description}}
+        <span *ngIf="!description">Add Your About.</span>
         <form *ngIf="showDesc" [formGroup]="descriptionForm">
           <textarea style="width: 100%;height: 100px;"
             placeholder="Please tell us about any hobbies, additional expertise, or anything else you’d like to add."
@@ -37,13 +38,41 @@
       <hr>
       <br>
       <div style="display: inline;">
+        <span style="font-weight: bold;">Category</span>
+        <span style="float: right;"><a style="cursor: pointer;" class="link-primary" (click)="showCategory()">Add new</a>
+        </span>
+      </div>
+      <div>
+        {{category}}
+        <span *ngIf="category=='none'">Add your Category</span>
+        <form *ngIf="showCat" [formGroup]="categoryForm">
+          <select formControlName="categoryControl">
+            <option value="none" >None</option>
+            <option value="Development & It">Development & It</option>
+                <option value="Design & Creative">Design & Creative</option>
+                <option value="Sales & Marketing">Sales & Marketing</option>
+                <option value="Writing & Translation">Writing & Translation</option>
+                <option value="Admin & Customer Support">Admin & Customer Support</option>
+                <option value="Finance & Accounting">Finance & Accounting</option>
+                <option value="Music & Audio">Music & Audio</option>
+                <option value="Programming & Tech">Programming & Tech</option>
+          </select><br>
+          <button (click)="cancelCat()" class="btn btn-light btn-lg">Cancel</button>
+          <button style="float: right;" (click)="submitCat()" class="btn btn-success btn-lg">update</button>
+        </form>
+      </div>
+      <br>
+      <hr>
+      <br>
+      <div style="display: inline;">
         <span style="font-weight: bold;">Education</span>
         <span style="float: right;"><a style="cursor: pointer;" class="link-primary" (click)="showEduBox()">Add new</a>
         </span>
       </div>
       <div>
-        {{userDegree}} - {{userBranch}}<br>
-        <span style="font-weight: lighter;" >{{userCollege}}, {{userCollegeCountry}}, Graduated {{userYearOfGraduation}}
+        <span *ngIf="!userCollege">Add your Education</span>
+        <span *ngIf="userDegree">{{userDegree}} - {{userBranch}}</span><br>
+        <span *ngIf="userCollege" style="font-weight: lighter;" >{{userCollege}}, {{userCollegeCountry}}, Graduated {{userYearOfGraduation}}
         </span>
           <form *ngIf="showEdu" [formGroup]="educationForm">
           <select class="country">
@@ -111,6 +140,7 @@
         </span>
       </div>
       <div>
+        <span *ngIf="!userCertificate">Add certificate</span>
         {{userCertificate}}<br>
         <span style="font-weight: lighter;" >{{userCertificateFrom}}, {{userCertificateYear}}
         </span>

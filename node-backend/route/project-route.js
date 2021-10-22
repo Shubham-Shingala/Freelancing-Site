@@ -3,6 +3,8 @@ const path=require('path');
 
 const route = express.Router();
 let project = require('../models/project');
+let bid = require('../models/Bid');
+
 
 //get all project
 route.get('/', (req, res, next) => {
@@ -11,7 +13,7 @@ route.get('/', (req, res, next) => {
             return next(error)
         }
         else {
-            res.json(data);
+           return res.json({status:'ok',data:data});
         }
     })
 })
@@ -37,15 +39,39 @@ route.get('/read/:id', (req, res, next) => {
     })
 })
 
+//get project category wise
+route.post('/getProjectOfCategory',(req,res)=>{
+    project.find({Category:req.body.category},(err,data)=>{
+        if(err){
+            console.log(err);
+        }
+        if(data){
+            return res.json({status:'ok',data:data});
+        }
+    })
+})
+
 route.post('/updateBid/:id',(req,res,next)=>{
     project.findByIdAndUpdate(req.params.id,{
         NumberOfBids:req.body.bid
     },(error, data) => {
-        console.log(data);
         if (error) {
             return next(error);
         } else {
             return res.json({status:'ok',data:data})
+        }
+    })
+})
+
+//download project file
+route.get('/download/:id',(req,res)=>{
+    project.findById(req.params.id,(err,data)=>{
+        if(err){
+            console.log(err);
+        }
+        if(data){
+            const file=path.join(__dirname,'/uploads/')+data.FilePath;
+            return res.download(file);
         }
     })
 })
@@ -83,11 +109,16 @@ route.put('/update/:id', (req, res, next) => {
 route.delete('/delete/:id', (req, res, next) => {
     project.findOneAndRemove(req.params.id, (error, data) => {
         if (error) {
-            return next(error);
+            console.log(err);
         } else {
-            res.status(200).json({
-                msg: data
-            })
+          bid.deleteMany({project:req.params.id},(err,data)=>{
+              if(err){
+                  console.log(err);
+              }
+              else{
+                  return res.json({status:'ok'})
+              }
+          })
         }
     })
 })

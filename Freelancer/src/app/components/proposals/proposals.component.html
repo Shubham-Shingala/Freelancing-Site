@@ -1,3 +1,5 @@
+<h1 *ngIf="error">{{error}}</h1>
+<div *ngIf="!error">
 <div class="card" *ngFor="let bid of bids">
     <div class="card-body">
       <div class="userDetails">
@@ -13,3 +15,4 @@
       <p class="card-text">{{bid.Proposal}}</p>
     </div>
   </div>
+</div>
