@@ -1,25 +1,40 @@
-<h1>Register User</h1>
-<form [formGroup]="RegisterForm" (ngSubmit)="onSubmit()" >
-    <div class="mb-3">
-        <mat-form-field appearance="standard">
-            <mat-label>Email</mat-label>
-            <input
-              type="email"
-              matInput
-              formControlName="emailControl"
-              placeholder="Ex. test@example.com"
-            />
-            <mat-icon matSuffix>email</mat-icon>
-            <mat-error
-              *ngIf="email?.hasError('pattern') && !email?.hasError('required')"
-            >
-              Please enter a valid email address
-            </mat-error>
-            <mat-error *ngIf="email?.hasError('required')">
-              Email is <strong>required</strong>
-            </mat-error>
-          </mat-form-field>
+<div class="container">
+  <div class="card">
+    <div class="card-body">
+      <div class="card-title">Register User</div>
+      <div class="card-text">
+        <form [formGroup]="RegisterForm" (ngSubmit)="onSubmit()">
+          <div class="mb-3">
+            <mat-form-field appearance="standard">
+              <mat-label>Email</mat-label>
+              <input
+                type="email"
+                matInput
+                formControlName="emailControl"
+                placeholder="Ex. test@example.com"
+              />
+              <mat-icon matSuffix>email</mat-icon>
+              <mat-error
+                *ngIf="
+                  email?.hasError('pattern') && !email?.hasError('required')
+                "
+              >
+                Please enter a valid email address
+              </mat-error>
+              <mat-error *ngIf="email?.hasError('required')">
+                Email is <strong>required</strong>
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <button type="submit" class="btn btn-block">
+            Continue With Email
+          </button>
+        </form>
+        <br>
+        <a href="/login" class="link"
+          >Already have an Account? Sign In</a
+        >
+      </div>
     </div>
-    <button type="submit" class="btn btn-primary">Continue With Email</button>
-</form>
-<a href="/login" class="btn btn-link text-decoration-none">Already have an Account?</a>
+  </div>
+</div>
