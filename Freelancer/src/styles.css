@@ -19,7 +19,7 @@ font-family: 'Sora', sans-serif;
 
 /* Navbar */
 #navigation_bar{
-    width: 85%;
+    width: 90%;
     margin: auto;
 }
 
@@ -27,25 +27,31 @@ font-family: 'Sora', sans-serif;
     font-family: 'Sora', sans-serif;
     font-weight: 700;
     font-size: 2rem;
-    color: green;
+    color: rgb(0, 199, 0);
+}
+
+.container-fluid:hover .navbar-brand:hover {
+    color: rgb(1, 150, 1) !important; 
 }
 
 .container-fluid .nav-link{
     font-family: 'Hahmlet', serif;
-    font-size: 1.2rem;
-    font-weight: 400;
-    color: black;
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: rgb(1, 24, 4);
+    border-radius: 20px;
+    text-align: center;
+    vertical-align: middle;
 }
 
 .container-fluid .nav-link:hover{
-    color: green;
-    background-color: white;
-    border: solid 2px green;
-    border-radius: 10px;
+    color: white;
+    background-color: rgb(0, 199, 0) ;
 }
 
 .nav-item{
-    padding: 5px 5px;
+    padding: 5px;
+    margin: 2px;
 }
 
 .dropdown:hover .dropdown-menu{
@@ -73,3 +79,17 @@ font-family: 'Sora', sans-serif;
 }
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.btn {
+    background-color: rgb(0, 199, 0) !important;
+    border-radius: 25px !important;
+}
+
+.btn:hover {
+    background-color: rgb(0, 150, 0) !important;
+}
+
+.active-nav-item {
+    color: white !important;
+    background-color: rgb(0, 199, 0) ;
+}
