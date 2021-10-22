@@ -1,3 +1,16 @@
+body{
+    padding-top: 3%;
+    padding-bottom: 2%;
+    background-color: #f1f1f1;
+}
+
+textarea {
+    width:100% !important;
+}
+
+.bid-day {
+    display: inline-block;
+}
 
 .card{
     box-shadow: 0 0 4px 0 rgb(0 0 0 / 8%);
@@ -52,7 +65,6 @@ mat-form-field {
     width: 100%;
 }
 
-
 .btn{
     width: 380px;
     background: green;
@@ -64,5 +76,5 @@ mat-form-field {
 
 .btn-bid{
     margin: auto;
-    width: 100%;
+    width: fit-content;
 }
