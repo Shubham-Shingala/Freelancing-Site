@@ -6,6 +6,7 @@
     margin-right: auto;
     margin-top: 14px;
     border: groove 2px green;
+    padding: 2%;
 }
 .projectDetails{
     display: inline;
