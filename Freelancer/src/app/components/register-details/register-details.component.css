@@ -1,0 +1,48 @@
+/* google fonts 
+font-family: 'Andada Pro', serif;
+font-family: 'Hahmlet', serif;
+font-family: 'Sora', sans-serif;
+*/
+
+.card {
+    text-align: center;
+    margin: 5% 0%;
+    border: groove 2px green;
+    padding: 20px 20px;
+}
+
+.card-title{
+    font-family: 'Sora', sans-serif;
+    font-size: 1.6rem;
+    font-weight: 700;
+    margin: 15px auto 20px;
+    color: green;
+    text-decoration: underline;
+    width: 380px;
+}
+
+.alert-danger{
+    width: 380px;
+    margin: 10px auto;
+}
+
+.mat-form-field{
+    width: 380px !important;
+    height: 50px;
+}
+
+.radio-btn{
+    margin-top: 35px;
+    margin-bottom: 25px;
+}
+
+.btn{
+    width: 380px;
+    background: green;
+    color: white;
+}
+
+.link{
+    margin-top: 10px;
+    color: black;
+}

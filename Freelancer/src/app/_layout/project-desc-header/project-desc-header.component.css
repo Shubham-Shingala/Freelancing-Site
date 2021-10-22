@@ -1,6 +1,6 @@
 .headerProject{
     width: 100%;
-    background-color: #0e1724;
+    background-color: #001e00;
     height: 140px;
 }
 .projectName{
@@ -31,5 +31,5 @@
 }
 .rootOfPage{
     background-color: rgb(241, 241, 241);
-    padding-top: 14px;
+    padding: 3%;
 }

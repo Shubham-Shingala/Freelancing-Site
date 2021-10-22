@@ -1,9 +1,18 @@
+.roofOfPage{
+    background-color: rgb(241, 241, 241);
+    padding: 3% 0 5%;
+}
+
 .file-input{
     display: none;
 }
 
 .file-upload{
     /* background-color: rgb(240, 239, 239); */
+    margin-top: 15px;
+    text-align: left;
+    margin-left: 10px;
+    font-weight: bold;
 }
 .cancel-upload{
     display: inline-block;
@@ -13,4 +22,75 @@
 }
 .uploadProgress{
     display: inline-block;
+}
+
+/* google fonts 
+font-family: 'Andada Pro', serif;
+font-family: 'Hahmlet', serif;
+font-family: 'Sora', sans-serif;
+*/
+
+.card {
+    text-align: center;
+    /* margin: 3% 0% 5%; */
+    border: groove 2px green;
+    padding: 10px 10px;
+}
+
+.card-title{
+    font-family: 'Sora', sans-serif;
+    font-size: 1.6rem;
+    font-weight: 700;
+    margin: 15px 0px 25px;
+    color: green;
+    text-decoration: underline;
+}
+
+.alert-danger{
+    width: 380px;
+    margin: 10px auto;
+}
+
+.mat-form-field{
+    width: 380px !important;
+    height: 80px;
+}
+
+.btn{
+    width: 380px;
+    background: green;
+    color: white;
+    margin-top: 15px;
+}
+
+.link{
+    margin-top: 10px;
+    color: black;
+}
+
+input{
+    width: 100%;
+    padding: 8px 15px;
+    margin: 8px 0 20px;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+label{
+    float: left;
+    font-size: 16px;
+    margin-left: 10px;
+}
+
+.text-danger{
+    margin-top: 5px;
+}
+
+.category{
+    margin-top: 10px;
+}
+
+.budget{
+    margin-top: 15px;
 }

@@ -1,18 +1,36 @@
 <div class="rootOfPage">
-<div (click)="cardClick(project._id)" *ngFor="let project of projectList" class="card" style="width: 18rem;">
-    <div class="card-body">
-        <div style="display: inline;">
-      <span class="card-title">{{project.Name}}</span>
-      <span class="budget"><i class="fas fa-rupee-sign"></i> {{project.MinBudget}} - {{project.MaxBudget}} INR</span>
-    </div>
-      <h4 class="card-subtitle mb-2 text-muted">{{project.ProjectPostTime | date: 'MMM d, y, h:mm:ss a'}}</h4>
-      <p class="desc">{{project.Description}}</p>
-      <h4 class="card-subtitle">{{project.Category}}</h4>
-      <div class="bottomOfCard">
-      <span>{{project.Status}}</span>&nbsp;&nbsp;
-      <span><i class="fas fa-gavel"></i>&nbsp;{{project.NumberOfBids}} Bid&nbsp; &nbsp;</span>
-      <span>  {{project.Duration}} Days Duration</span>
-    </div>
+  <div class="container">
+    <div
+      (click)="cardClick(project._id)"
+      *ngFor="let project of projectList"
+      class="card"
+      style="width: 18rem"
+    >
+      <div class="card-body">
+        <div style="display: inline">
+          <span class="card-title">{{ project.Name }}</span>
+          <span class="budget"
+            ><i class="fas fa-rupee-sign"></i> {{ project.MinBudget }} -
+            {{ project.MaxBudget }} INR</span
+          >
+        </div>
+        <h4 class="card-subtitle mb-2 text-muted">
+          {{ project.ProjectPostTime | date: "MMM d, y, h:mm:ss a" }}
+        </h4>
+        <p class="desc">{{ project.Description }}</p>
+        <h4 class="card-subtitle"><span class="cat-box">{{ project.Category }}</span></h4>
+        <div class="bottomOfCard">
+          <span><b>{{ project.Status }}</b></span
+          >&nbsp;&nbsp;
+          <span
+            ><i class="fas fa-gavel"></i>&nbsp;{{
+              project.NumberOfBids
+            }}
+            Bid&nbsp; &nbsp;</span
+          >
+          <span> {{ project.Duration }} Days Duration</span>
+        </div>
+      </div>
     </div>
   </div>
 </div>
