@@ -176,7 +176,7 @@ route.get('/getAllHiredProject/:id',(req,res)=>{
 route.post('/file-upload',(req, res,next)=> {
 
     let file = req['files'].file;
-    let uploadPath=path.join("../../Freelancer/Freelancer/src/assets","uploads")+"/"+file.name;
+    let uploadPath=path.join("../../Freelancing-Site/Freelancer/src/assets","uploads")+"/"+file.name;
     file.mv(uploadPath,(err)=>{
         if(err){
             return next(err);
