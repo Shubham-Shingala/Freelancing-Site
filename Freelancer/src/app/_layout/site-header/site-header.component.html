@@ -16,13 +16,13 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
             <li class="nav-item">
-              <a class="nav-link" aria-current="page" [routerLink]="['/']" routerLinkActive="['active']"  >Home</a>
-            </li>
-            <li class="nav-item">
               <a *ngIf="loggedUserRole=='buyer'" class="nav-link" [routerLink]="['/post-project']">Post Project</a>
             </li>
             <li class="nav-item">
               <a *ngIf="loggedUserRole=='buyer'" matBadge={{numberOfProject}}  class="nav-link" [routerLink]="['/project']">My Project</a>
+            </li>
+            <li *ngIf="loggedUserRole=='freelancer'" class="nav-item">
+              <a class="nav-link" [routerLink]="['/hiredProjects']" routerLinkActive="router-link-active" >My Hired Projects</a>
             </li>
             <li class="nav-item">
               <a *ngIf="loggedUserRole=='freelancer'" [routerLink]="['/find-jobs']" routerLinkActive="active"  class="nav-link">Find Jobs</a>

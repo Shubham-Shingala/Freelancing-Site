@@ -35,6 +35,7 @@ import { FindJobComponent } from './components/find-job/find-job.component';
 import { FindJobProjectDescComponent } from './components/find-job-project-desc/find-job-project-desc.component';
 import { FindJobProjectHeaderComponent } from './_layout/find-job-project-header/find-job-project-header.component';
 import { FindJobProjectProposalsComponent } from './components/find-job-project-proposals/find-job-project-proposals.component';
+import { FreelancerProjectsComponent } from './components/freelancer-projects/freelancer-projects.component';
 
 
 @NgModule({
@@ -61,7 +62,8 @@ import { FindJobProjectProposalsComponent } from './components/find-job-project-
     FindJobComponent,
     FindJobProjectDescComponent,
     FindJobProjectHeaderComponent,
-    FindJobProjectProposalsComponent
+    FindJobProjectProposalsComponent,
+    FreelancerProjectsComponent
     ],
   imports: [
     BrowserModule,

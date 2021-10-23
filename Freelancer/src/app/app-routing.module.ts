@@ -20,6 +20,7 @@ import { FindJobComponent } from './components/find-job/find-job.component';
 import { FindJobProjectHeaderComponent } from './_layout/find-job-project-header/find-job-project-header.component';
 import { FindJobProjectDescComponent } from './components/find-job-project-desc/find-job-project-desc.component';
 import { FindJobProjectProposalsComponent } from './components/find-job-project-proposals/find-job-project-proposals.component';
+import { FreelancerProjectsComponent } from './components/freelancer-projects/freelancer-projects.component';
 const route:Routes=[
   //site routes goes here
   {
@@ -38,7 +39,8 @@ const route:Routes=[
       {path:'findjobsProjects/:id',component:FindJobProjectHeaderComponent,children:[
         {path:'Details',component:FindJobProjectDescComponent},
         {path:'Proposals',component:FindJobProjectProposalsComponent}
-      ]}
+      ]},
+      {path:'hiredProjects',component:FreelancerProjectsComponent}
     ],
     canActivate:[AuthGuard]
   },

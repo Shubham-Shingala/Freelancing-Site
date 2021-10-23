@@ -16,7 +16,7 @@
       <a (click)=download() class="link-primary fileLink">{{fileName}}</a>
     </div>
   </div>
-  <div class="card">
+  <div *ngIf="project.Status=='pending'" class="card">
     <div class="card-body">
         <span class="card-title">Place a Bid on this Project</span>
         <hr>

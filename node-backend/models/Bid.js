@@ -6,7 +6,8 @@ let Bid=new schema({
     project:{type:schema.Types.String,ref:'project'},
     BidAmount:{type:Number},
     DeliveredDays:{type:Number},
-    Proposal:{type:String}
+    Proposal:{type:String},
+    Status:{type:String,default:"not Hired"}
 },{
     collection:"bids"
 })

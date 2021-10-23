@@ -16,4 +16,8 @@ export class BidService {
     let url=`${this.baseUri}/getBidOfProject/`+id;
     return this.http.get(url);
   }
+  getBidOfHiredProject(id:string | null){
+    let url=`${this.baseUri}/getBidOfHiredProject/`+id;
+    return this.http.get(url);
+  }
 }

@@ -24,4 +24,16 @@ route.get('/getBidOfProject/:id',(req,res)=>{
     })
 })
 
+//get hired bid of project
+route.get('/getBidOfHiredProject/:id',(req,res)=>{
+    bid.find({project:req.params.id,Status:'Hired'})
+    .populate('BidUser')
+    .exec((err,data)=>{
+        if(err){console.log(err)}
+        if(data){
+            return res.json({status:'ok',data:data});
+        }
+    })
+})
+
 module.exports=route;

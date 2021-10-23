@@ -16,7 +16,7 @@ import * as fileSaver from 'file-saver';
 })
 export class FindJobProjectDescComponent implements OnInit {
   id!:string | null;
-  public project!:IProject;
+  public project!:any;
   bidForm!:FormGroup;
   userId!:string;
   numberOfBid!:number;

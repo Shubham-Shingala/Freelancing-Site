@@ -24,6 +24,7 @@ export class FindJobProjectProposalsComponent implements OnInit {
         }
       }
     )
+
     this.bidService.getBidOfProject(this.id).subscribe(
       (res:any)=>{
         if(res.status=='ok'){

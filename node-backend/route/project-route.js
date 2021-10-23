@@ -4,11 +4,12 @@ const path=require('path');
 const route = express.Router();
 let project = require('../models/project');
 let bid = require('../models/Bid');
+var mongoose = require('mongoose');
 
 
-//get all project
+//get all pending project
 route.get('/', (req, res, next) => {
-    project.find((error, data) => {
+    project.find({Status:'pending'},(error, data) => {
         if (error) {
             return next(error)
         }
@@ -17,6 +18,8 @@ route.get('/', (req, res, next) => {
         }
     })
 })
+
+
 //create project
 route.post('/create', (req, res, next) => {
     project.create(req.body, (error, data) => {
@@ -41,7 +44,7 @@ route.get('/read/:id', (req, res, next) => {
 
 //get project category wise
 route.post('/getProjectOfCategory',(req,res)=>{
-    project.find({Category:req.body.category},(err,data)=>{
+    project.find({Category:req.body.category,Status:'pending'},(err,data)=>{
         if(err){
             console.log(err);
         }
@@ -76,11 +79,35 @@ route.get('/download/:id',(req,res)=>{
     })
 })
 
-//update project status
+//update project status and bid status
 route.post('/updateProjectStatus/:id',(req,res)=>{
-    project.findOneAndUpdate(req.params.id,{
+    project.findByIdAndUpdate(req.params.id,{
         Status:req.body.status,
         hiredUser:req.body.userId
+    },(err,data)=>{
+        if(err){
+            console.log(err);
+        }
+        if(data){
+            bid.findByIdAndUpdate(req.body.bidId,
+                {
+                    Status:'Hired'
+                },(err,data)=>{
+                    if(err){
+                        console.log(err);
+                    }
+                    if(data){
+                        return res.json({status:'ok',data:data})
+                    }
+                })
+        }
+    })
+})
+
+//update status of project
+route.post('/updateStatusOfProject/:id',(req,res)=>{
+    project.findByIdAndUpdate(req.params.id,{
+        Status:req.body.status
     },(err,data)=>{
         if(err){
             console.log(err);
@@ -99,8 +126,7 @@ route.put('/update/:id', (req, res, next) => {
         if (error) {
             return next(error);
         } else {
-            res.json(data)
-            console.log('Data updated successfully')
+           return res.json({status:'ok',data:data})
         }
     })
 })
@@ -124,8 +150,7 @@ route.delete('/delete/:id', (req, res, next) => {
 })
 
 //find projects of user
-route.get('/findProjectsOfUser/:userId',(req,res,next)=>{
-    // console.log(req.params.userId);
+route.get('/findProjectsOfUser/:userId',(req,res,next)=>
     project.find({_User:req.params.userId},(err,data)=>{
         if(err){
             console.log(err);
@@ -134,7 +159,19 @@ route.get('/findProjectsOfUser/:userId',(req,res,next)=>{
             res.json({status:'ok',data:data})
         }
     })
-})
+)
+
+//get all hired projects of user
+route.get('/getAllHiredProject/:id',(req,res)=>{
+    project.find({Status:'Hired',hiredUser:req.params.id},(err,data)=>{
+        if(err){
+            console.log(err);
+        }
+        if(data){
+            return res.json({status:'ok',data:data});
+        }
+    })
+}) 
 
 route.post('/file-upload',(req, res,next)=> {
 

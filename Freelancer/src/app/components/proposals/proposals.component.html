@@ -10,7 +10,7 @@
         <span class="bidAmount">₹{{bid.BidAmount}} INR</span>
         <br>
         <span class="deliverDays">in {{bid.DeliveredDays}} days</span>
-        <button (click)="hireFreelacer(bid.BidUser._id)">hire</button>
+        <button *ngIf="!hiredProject" (click)="hireFreelacer(bid.BidUser._id,bid._id)">hire</button>
     </div>
       <p class="card-text">{{bid.Proposal}}</p>
     </div>

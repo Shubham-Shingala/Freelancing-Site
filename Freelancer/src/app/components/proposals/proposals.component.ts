@@ -14,6 +14,7 @@ export class ProposalsComponent implements OnInit {
   id!:string | null;
   public error:string | null=null;
   public bids!:any[];
+  public hiredProject:boolean=false;
   constructor(private authService:AuthService,private router:Router,private projectService:ProjectService,private route:ActivatedRoute,private bidService:BidService) { }
 
   ngOnInit(): void {
@@ -25,28 +26,49 @@ export class ProposalsComponent implements OnInit {
         }
       }
     )
-    this.bidService.getBidOfProject(this.id).subscribe(
+    this.projectService.getOneProject(this.id).subscribe(
       (res:any)=>{
-        if(res.status=='ok'){
-          if(res.data.length==0){
-            this.error="One one Place Bid Yet!";
-          }
-          else
-          this.bids=res.data;
+        if(res.status=='ok' && res.data.Status=='Hired'){
+          this.hiredProject=true;
+          this.bidService.getBidOfHiredProject(this.id).subscribe(
+            (res:any)=>{
+              if(res.status=='ok'){
+                this.bids=res.data;
+              }
+            }
+          )
+        }
+        else{
+          this.bidService.getBidOfProject(this.id).subscribe(
+            (res:any)=>{
+              if(res.status=='ok'){
+                if(res.data.length==0){
+                  this.error="One one Place Bid Yet!";
+                }
+                else
+                this.bids=res.data;
+              }
+            }
+          )
         }
       }
     )
+
+    
   }
-  hireFreelacer(userid:string){
+  hireFreelacer(userid:string,bidId:string){
     let obj={
       userId:userid,
       status:'Hired',
-      projectId:this.id
+      projectId:this.id,
+      bidId:bidId
     }
     this.projectService.updateProjectStatus(obj).subscribe(
       (res:any)=>{
         if(res.status=='ok')
-        console.log("ok");
+        {
+          this.hiredProject=true;
+        }
       }
     )
   }
