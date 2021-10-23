@@ -4,7 +4,7 @@
   </div>
   <div class="container">
     <h1>{{error}}</h1>
-    <div (click)="cardClick(project._id)" *ngFor="let project of projectList" class="card" style="width: 18rem">
+    <div (click)="cardClick(project._id)" *ngFor="let project of projectList" class="card shadow p-3 mb-5 bg-white rounded" style="width: 18rem">
       <div class="card-body">
         <div style="display: inline">
           <span class="card-title">{{ project.Name }}</span>

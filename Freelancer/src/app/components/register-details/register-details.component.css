@@ -6,7 +6,7 @@ font-family: 'Sora', sans-serif;
 
 .card {
     text-align: center;
-    margin: 5% 0%;
+    margin: 0% 0%;
     border: groove 2px green;
     padding: 20px 20px;
 }
@@ -17,8 +17,7 @@ font-family: 'Sora', sans-serif;
     font-weight: 700;
     margin: 15px auto 20px;
     color: green;
-    text-decoration: underline;
-    width: 380px;
+    width: 450px;
 }
 
 .alert-danger{
@@ -45,4 +44,18 @@ font-family: 'Sora', sans-serif;
 .link{
     margin-top: 10px;
     color: black;
+}
+
+h3 {
+    margin: -5px !important;
+}
+
+
+.link{
+    margin-top: 10px;
+    color: blue;
+}
+
+.link:hover {
+    color: darkblue;
 }

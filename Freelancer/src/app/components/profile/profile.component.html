@@ -1,5 +1,5 @@
 <div class="roofOfPage">
-  <div class="card">
+  <div class="card shadow-lg p-3 mb-5 bg-white rounded">
     <div class="imgBox">
       <img [src]="imageUrl" class="card-img-top profileImg" />
       <div class="uploadBtn">
@@ -120,7 +120,7 @@
           </span>
         </div>
         <div style="margin-top: 5px;">
-          <span *ngIf="!userCollege">Add your Education</span>
+          <span *ngIf="!userCollege && !userDegree">Add your Education</span>
           <span *ngIf="userDegree">{{ userDegree }} - {{ userBranch }}</span
           ><br />
           <span *ngIf="userCollege" style="font-weight: lighter"
@@ -162,6 +162,7 @@
               <option value="phd">Ph.D</option>
               <option value="llb">LLB</option>
               <option value="llm">LLM</option>
+              <option value="B.Tech.">B.Tech.</option>
               <option value="other">Other</option>
             </select>
             <br>
@@ -225,8 +226,8 @@
         <div style="margin-top: 5px;">
           <span *ngIf="!userCertificate">Add certificate</span>
           {{ userCertificate }}<br />
-          <span style="font-weight: lighter"
-            >{{ userCertificateFrom }}, {{ userCertificateYear }}
+          <span style="font-weight: lighter">
+            {{ userCertificateFrom }} {{ userCertificateYear }}
           </span>
           <form *ngIf="showCerti" [formGroup]="certificateForm">
             <input

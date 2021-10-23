@@ -71,13 +71,14 @@
               </ul>
             </li>
             <li class="nav-item">
-              <a [routerLink]="['/profile']" routerLinkActive="active-nav-item" class="nav-link"> Hi, {{loggedUserName}}</a>
+              <a [routerLink]="['/profile']" routerLinkActive="active-nav-item" class="nav-link"> Hii {{loggedUserName}}</a>
             </li>
             <li class="nav-item"  *ngIf="loggedUser">
-              <button (click)="logout()"  class="btn btn-primary">logout</button>
+              <button (click)="logout()"  class="btn-logout btn nav-link">Logout</button>
             </li>
           </ul>
         </div>
       </div>
     </nav>
   </section>
+  <hr>

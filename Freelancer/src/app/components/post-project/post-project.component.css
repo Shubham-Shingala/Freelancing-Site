@@ -32,7 +32,7 @@ font-family: 'Sora', sans-serif;
 
 .card {
     text-align: center;
-    /* margin: 3% 0% 5%; */
+    margin: 3% 0% 3%;
     border: groove 2px green;
     padding: 10px 10px;
 }
@@ -43,7 +43,6 @@ font-family: 'Sora', sans-serif;
     font-weight: 700;
     margin: 15px 0px 25px;
     color: green;
-    text-decoration: underline;
 }
 
 .alert-danger{
