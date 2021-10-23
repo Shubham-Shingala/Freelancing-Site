@@ -31,6 +31,7 @@ export class ProfileComponent implements OnInit {
   public imageUrl:string | null=null;
   public category!:string;
   public showCat:boolean=false;
+  public userRole!:string;
   certificateForm!:FormGroup;
   descriptionForm!:FormGroup;
   educationForm!:FormGroup;
@@ -42,9 +43,6 @@ export class ProfileComponent implements OnInit {
     this.authService.loggedUser().subscribe(
       (res:any)=>{
       if(res.status=='ok'){
-        if(res.data.Role=='buyer'){
-          this.router.navigateByUrl('/')
-        }
         let temp=res.data.Email.split('@',2);
         this.username=temp[0];
         var userDate=Date.parse(res.data.createdAt);
@@ -62,6 +60,7 @@ export class ProfileComponent implements OnInit {
         this.userCertificateYear=res.data.YearOfCertificate;
         this.imageUrl="../../../assets/uploads/"+res.data.profileImg;
         this.category=res.data.Category;
+        this.userRole=res.data.Role;
       }
       }
     )

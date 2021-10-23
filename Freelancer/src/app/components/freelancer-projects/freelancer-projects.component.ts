@@ -12,6 +12,7 @@ import {ProjectService} from 'src/app/services/project.service'
 export class FreelancerProjectsComponent implements OnInit {
   public projectList!:IProject[];
   userId!:string;
+  public error:string | null=null;
   constructor(private projectService:ProjectService
     ,private authService:AuthService
     ,private router:Router) { }
@@ -28,7 +29,14 @@ export class FreelancerProjectsComponent implements OnInit {
           this.projectService.getAllHiredProject(this.userId).subscribe(
             (res:any)=>{
               if(res.status=='ok'){
+                {
+                  if(res.data.length==0)
+                  {
+                    this.error="No Buyer has hired you yet!";
+                  }
+                  else
                 this.projectList=res.data;
+                }
               }
             }
           )
@@ -39,5 +47,18 @@ export class FreelancerProjectsComponent implements OnInit {
 
   cardClick(id:string){
     this.router.navigate(["/findjobsProjects/",id,"Details"]);
+  }
+  completeProject(id:string){
+    let obj:any={
+      status:'completed',
+      id:id
+    }
+    this.projectService.updateStatusOfProject(obj).subscribe(
+      (res:any)=>{
+        if(res.status=='ok'){
+          this.getHiredProject();
+        }
+      }
+    )
   }
 }

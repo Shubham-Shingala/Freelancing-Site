@@ -33,3 +33,7 @@
 #how-it-work .second{
     margin-top: 20px;
 }
+
+.card {
+    height : 100% !important;
+}

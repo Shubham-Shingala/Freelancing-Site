@@ -34,12 +34,21 @@
 }
 
 .cat-box{
-    border: groove 2px rgb(241, 241, 241);
+    border: solid 1px rgb(190, 190, 190);
     padding: 8px;
-    border-radius: 20px;
+    border-radius: 25px;
 }
 
 .cat-box:hover{
     color: white;
     background: #063d06;
+}
+.refresh-btn {
+    margin-left: 75px;
+    margin-bottom: 35px;
+}
+.hire-btn{
+    padding: 18px;
+    position: absolute;
+    right: 60px;
 }

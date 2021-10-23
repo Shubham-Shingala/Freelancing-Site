@@ -10,6 +10,7 @@ import { ProjectService } from 'src/app/services/project.service';
 })
 export class FindJobComponent implements OnInit {
   public projectList!:any[];
+  public error:string | null=null;
   constructor(private authService:AuthService,private router:Router,private projectService:ProjectService) { }
 
   ngOnInit(): void {
@@ -30,6 +31,10 @@ export class FindJobComponent implements OnInit {
             this.projectService.getAllProject().subscribe(
               (res:any)=>{
                 if(res.status=='ok'){
+                  if(res.data.length==0){
+                    this.error="Buyers haven't yet post project.";
+                  }
+                  else
                   this.projectList=res.data;
                 }
               }
@@ -42,6 +47,10 @@ export class FindJobComponent implements OnInit {
             this.projectService.getProjectsOfCategory(obj).subscribe(
               (res:any)=>{
                 if(res.status=='ok'){
+                  if(res.data.length==0){
+                    this.error="Buyers haven't yet post project In your Cateogry. If You want to Change Category then go to profile section.";
+                  }
+                  else
                   this.projectList=res.data;
                 }
               }

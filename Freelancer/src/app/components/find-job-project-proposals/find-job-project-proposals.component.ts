@@ -13,6 +13,7 @@ export class FindJobProjectProposalsComponent implements OnInit {
   id!:string | null;
   public bids!:any[];
   public error:string | null=null;
+  public hiredProject:boolean=false;
   constructor(private authService:AuthService,private router:Router,private projectService:ProjectService,private route:ActivatedRoute,private bidService:BidService) { }
 
   ngOnInit(): void {
@@ -25,18 +26,40 @@ export class FindJobProjectProposalsComponent implements OnInit {
       }
     )
 
-    this.bidService.getBidOfProject(this.id).subscribe(
+    this.getAllBids();
+  }
+
+  getAllBids(){
+    this.projectService.getOneProject(this.id).subscribe(
       (res:any)=>{
-        if(res.status=='ok'){
-          if(res.data.length==0){
-            this.error="One one Place Bid Yet!";
-          }
-          else
-          this.bids=res.data;
+        if(res.status=='ok' && (res.data.Status=='Hired' || res.data.Status=='completed')){
+          this.hiredProject=true;
+          this.bidService.getBidOfHiredProject(this.id).subscribe(
+            (res:any)=>{
+              if(res.status=='ok'){
+                this.bids=res.data;
+              }
+            }
+          )
+        }
+        else{
+          this.bidService.getBidOfProject(this.id).subscribe(
+            (res:any)=>{
+              if(res.status=='ok'){
+                if(res.data.length==0){
+                  this.error="No one Place Bid Yet!";
+                }
+                else
+                this.bids=res.data;
+              }
+            }
+          )
         }
       }
     )
   }
+
+
   placeBid(){
     this.router.navigate(['findjobsProjects',this.id,'Details']);
   }

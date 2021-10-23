@@ -1,38 +1,82 @@
+.roof{
+    background: rgb(241, 241, 241);
+    padding-top: 35px;
+    padding-bottom: 35px;
+    padding-left: 7%;
+    padding-right: 7%;
+}
 .card{
     box-shadow: 0 0 4px 0 rgb(0 0 0 / 8%);
     width:90%;
     margin-left: auto;
     margin-right: auto;
     margin-top: 14px;
+    padding: 2%;
+    border: groove 2px green;
 }
+.userImg{
+    display: inline-block;
+}
+
 .bidUserImg{
     width: 108px;
     height: 100px;
 }
+
 .userDetails{
     display: flex;
     font-size: 20px;
 }
+
+.user{
+    display: inline-block;
+    padding: 18px;
+}
+
 .userName{
     font-weight: 500;
-    margin-top: 16px;
+    font-size: 1.5rem;
+    display: block;
+    margin-bottom: 10px;
+    /* margin-top: 16px; */
 }
+
 .userEmail{
     font-weight: 200;
-    margin-top: 16px;
+    font-size: 0.9rem;
+    /* margin-top: 16px; */
+    margin-left: 10px;
 
 }
+.refresh-btn {
+    margin-left: 75px;
+    margin-bottom: 35px;
+}
+
 .card-text{
     font-size: medium;
     margin-top: 15px;
 }
 
-.bidAmount{
-    position: relative;
-    font-weight: 500;
-    right: 0px;
+.bidDetail{
+    padding: 18px;
+    display: inline-block;
 }
+
+.bidAmount{
+    font-weight: 500;
+    font-size: 1.5rem;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.hire-btn{
+    padding: 18px;
+    position: absolute;
+    right: 60px;
+}
+
 .deliverDays{
-    float: right;
-    font-size: small;
+    font-weight: 200;
+    font-size: 0.9rem;
 }

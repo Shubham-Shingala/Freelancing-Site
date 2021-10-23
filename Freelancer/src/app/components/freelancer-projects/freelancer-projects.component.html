@@ -1,7 +1,9 @@
 <div class="rootOfPage">
+  <div class="refresh-btn">
+    <button class="btn btn-primary" (click)=getHiredProject()><i class="fas fa-redo-alt"></i>&nbsp; &nbsp;View New Projects</button>
+    </div>
     <div class="container">
-<button (click)=getHiredProject()><i class="fas fa-redo-alt"></i>&nbsp;View New Projects</button>
-
+      <h1>{{error}}</h1>
       <div
         (click)="cardClick(project._id)"
         *ngFor="let project of projectList"
@@ -22,7 +24,7 @@
           <p class="desc">{{ project.Description }}</p>
           <h4 class="card-subtitle"><span class="cat-box">{{ project.Category }}</span></h4>
           <div class="bottomOfCard">
-            <span><b>{{ project.Status }}</b></span
+            <button class="btn btn-success" (click)="completeProject(project._id)" title="if You completed this project then click this button."><b>{{project.Status}}</b></button
             >&nbsp;&nbsp;
             <span
               ><i class="fas fa-gavel"></i>&nbsp;{{

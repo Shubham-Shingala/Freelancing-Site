@@ -33,7 +33,7 @@ route.post('/create', (req, res, next) => {
 })
 // Get single project
 route.get('/read/:id', (req, res, next) => {
-    project.findById(req.params.id, (error, data) => {
+    project.findById(req.params.id,(error, data) => {
         if (error) {
             return next(error)
         } else {
@@ -161,9 +161,9 @@ route.get('/findProjectsOfUser/:userId',(req,res,next)=>
     })
 )
 
-//get all hired projects of user
+//get all hired or completed projects of user
 route.get('/getAllHiredProject/:id',(req,res)=>{
-    project.find({Status:'Hired',hiredUser:req.params.id},(err,data)=>{
+    project.find({$or:[{Status:'Hired'},{Status:'completed'}],hiredUser:req.params.id},(err,data)=>{
         if(err){
             console.log(err);
         }

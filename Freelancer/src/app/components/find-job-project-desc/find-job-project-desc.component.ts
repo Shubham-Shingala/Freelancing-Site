@@ -50,8 +50,8 @@ export class FindJobProjectDescComponent implements OnInit {
     )
 
     this.bidForm=new FormGroup({
-      bidAmountControl:new FormControl("",Validators.required),
-      daysControl:new FormControl("",Validators.required),
+      bidAmountControl:new FormControl("",[Validators.required,Validators.min(0)]),
+      daysControl:new FormControl("",[Validators.required,Validators.min(1)]),
       proposalControl:new FormControl("",Validators.required)
     })
   }

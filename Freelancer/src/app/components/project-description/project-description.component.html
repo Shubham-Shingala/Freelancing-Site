@@ -1,19 +1,18 @@
-
 <div class="card">
-    <div class="card-body">
-        <div class="projectDetails">
+  <div class="card-body">
+    <div class="projectDetails">
       <span class="card-title">Project Details</span>
-      <span class="projectBudget"><i class="fas fa-rupee-sign"></i>&nbsp;{{project?.MinBudget}} – {{project?.MaxBudget}} INR</span>
+      <span class="projectBudget"><i class="fas fa-rupee-sign"></i>&nbsp;{{project?.MinBudget}} – {{project?.MaxBudget}}
+        INR</span>
     </div>
     <hr>
-      <p class="card-text">{{project?.Description}}</p>
-      <div class="projectDetails">
+    <p class="card-text">{{project?.Description}}</p>
+    <div class="projectDetails">
       <span class="projectCategoryLabel">Project Category</span>
       <span class="projectDuration">{{project?.Duration}} Days duration</span>
     </div>
       <div class="projectCategory">{{project?.Category}}</div>
-      <span *ngIf="fileName" class="projectCategoryLabel">Attached Document</span><br>
+    <span *ngIf="fileName" class="projectCategoryLabel">Attached Document</span><br>
     <a (click)=download() class="link-primary fileLink">{{fileName}}</a>
-    </div>
   </div>
-
+</div>

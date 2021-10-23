@@ -15,20 +15,20 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-            <li class="nav-item">
-              <a *ngIf="loggedUserRole=='buyer'" class="nav-link" [routerLink]="['/post-project']">Post Project</a>
+            <li class="nav-item" *ngIf="!loggedUserFreelancer" >
+              <a class="nav-link" [routerLink]="['/post-project']" routerLinkActive="active-nav-item">Post Project</a>
+            </li>
+            <li class="nav-item" *ngIf="!loggedUserFreelancer">
+              <a matBadge={{numberOfProject}}  class="nav-link" [routerLink]="['/project']" routerLinkActive="active-nav-item" >My Project</a>
+            </li>
+            <li class="nav-item" *ngIf="loggedUserFreelancer">
+              <a href="" class="nav-link" [routerLink]="['/find-jobs']" routerLinkActive="active-nav-item">Find Jobs</a>
+            </li>
+            <li *ngIf="loggedUserFreelancer" class="nav-item">
+              <a class="nav-link" [routerLink]="['/hiredProjects']" routerLinkActive="active-nav-item" >My Projects</a>
             </li>
             <li class="nav-item">
-              <a *ngIf="loggedUserRole=='buyer'" matBadge={{numberOfProject}}  class="nav-link" [routerLink]="['/project']">My Project</a>
-            </li>
-            <li *ngIf="loggedUserRole=='freelancer'" class="nav-item">
-              <a class="nav-link" [routerLink]="['/hiredProjects']" routerLinkActive="router-link-active" >My Hired Projects</a>
-            </li>
-            <li class="nav-item">
-              <a *ngIf="loggedUserRole=='freelancer'" [routerLink]="['/find-jobs']" routerLinkActive="active"  class="nav-link">Find Jobs</a>
-            </li>
-            <li class="nav-item">
-              <a href="#how-it-work" class="nav-link">How it Work</a>
+              <a [routerLink]="['']" fragment="how-it-work" [routerLinkActiveOptions]="{exact: true}"  class="nav-link" routerLinkActive="active-nav-item">How it Work</a>
             </li>
 
             <li class="nav-item dropdown">
@@ -70,21 +70,11 @@
                 </li>
               </ul>
             </li>
-
             <li class="nav-item">
-              <a *ngIf="!loggedUser" [routerLink]="['/login']"  class="btn btn-success">Sign In</a>
+              <a [routerLink]="['/profile']" routerLinkActive="active-nav-item" class="nav-link"> Hi, {{loggedUserName}}</a>
             </li>
-            <li class="nav-item">
-              <a *ngIf="!loggedUser" [routerLink]="['/register']" class="btn btn-success">Sign Up</a>
-            </li>
-            <li class="nav-item">
-              <a [routerLink]="['/profile']" *ngIf="loggedUserRole=='freelancer'" class="nav-link"> Hi, {{loggedUserName}}</a>
-            </li>
-            <li class="nav-item">
-              <span class="nav-link" *ngIf="loggedUserRole=='buyer'"> Hi, {{loggedUserName}}</span>
-            </li>
-            <li class="nav-item">
-              <button *ngIf="loggedUser"  (click)="logout()"  class="btn btn-success">logout</button>
+            <li class="nav-item"  *ngIf="loggedUser">
+              <button (click)="logout()"  class="btn btn-primary">logout</button>
             </li>
           </ul>
         </div>

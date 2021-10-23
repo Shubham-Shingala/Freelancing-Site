@@ -1,10 +1,24 @@
+body{
+    padding-top: 3%;
+    padding-bottom: 2%;
+    background-color: #f1f1f1;
+}
+
+textarea {
+    width:100% !important;
+}
+
+.bid-day {
+    display: inline-block;
+}
 
 .card{
     box-shadow: 0 0 4px 0 rgb(0 0 0 / 8%);
     width:90%;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 14px;
+    margin: 20px auto;
+    margin-bottom: 40px;
+    padding: 2%;
+    border: groove 2px rgb(98, 138, 98);
 }
 .projectDetails{
     display: inline;
@@ -26,16 +40,16 @@
     font-size: larger;
     font-weight: 500;
 }
+
 .projectCategory{
     font-size: 14px;
-    margin-top: 7px;
+    padding: 4px;
 }
+
+
 .projectDuration{
     float: right;
     font-size: 18px;
-}
-.bidFormInput{
-    display: inline;
 }
 
 textarea{
@@ -45,4 +59,22 @@ textarea{
 }
 .fileLink{
     cursor: pointer;
+}
+
+mat-form-field {
+    width: 100%;
+}
+
+.btn{
+    width: 380px;
+    background: green;
+    color: white;
+    margin-top: 15px;
+    margin-left: auto ;
+    margin-right: auto ;
+}
+
+.btn-bid{
+    margin: auto;
+    width: fit-content;
 }

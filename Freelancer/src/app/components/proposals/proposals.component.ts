@@ -26,9 +26,16 @@ export class ProposalsComponent implements OnInit {
         }
       }
     )
+    
+      this.getAllBids();
+    
+  }
+
+
+  getAllBids(){
     this.projectService.getOneProject(this.id).subscribe(
       (res:any)=>{
-        if(res.status=='ok' && res.data.Status=='Hired'){
+        if(res.status=='ok' && (res.data.Status=='Hired' || res.data.Status=='completed')){
           this.hiredProject=true;
           this.bidService.getBidOfHiredProject(this.id).subscribe(
             (res:any)=>{
@@ -43,7 +50,7 @@ export class ProposalsComponent implements OnInit {
             (res:any)=>{
               if(res.status=='ok'){
                 if(res.data.length==0){
-                  this.error="One one Place Bid Yet!";
+                  this.error="No one Place Bid Yet!";
                 }
                 else
                 this.bids=res.data;
@@ -53,9 +60,8 @@ export class ProposalsComponent implements OnInit {
         }
       }
     )
-
-    
   }
+
   hireFreelacer(userid:string,bidId:string){
     let obj={
       userId:userid,
@@ -68,6 +74,7 @@ export class ProposalsComponent implements OnInit {
         if(res.status=='ok')
         {
           this.hiredProject=true;
+          this.getAllBids();
         }
       }
     )

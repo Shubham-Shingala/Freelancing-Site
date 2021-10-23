@@ -11,7 +11,7 @@ import { ProjectService } from 'src/app/services/project.service';
 export class SiteHeaderComponent implements OnInit {
   public loggedUser:boolean=false;
   public loggedUserName:string |null =null;
-  public loggedUserRole!:string;
+  public loggedUserFreelancer:boolean = false;
   public numberOfProject!:number;
   constructor(private router:Router,private authService:AuthService,private projectService:ProjectService) { }
 
@@ -24,12 +24,14 @@ export class SiteHeaderComponent implements OnInit {
           if(res.status=='ok')
           {
            this.loggedUserName=res.data.FirstName;
-            this.loggedUserRole=res.data.Role;
+           if(res.data.Role == "freelancer") {
+              this.loggedUserFreelancer = true;
+           }
             this.projectService.getProjectsOfUser(res.data._id).subscribe(
               (res: any) => {
                 if (res.status == 'ok') {
                   var projectList:any[] = res.data;
-                  this.numberOfProject= projectList.length;
+                  this.numberOfProject= projectList.length
                 }
               }
             )

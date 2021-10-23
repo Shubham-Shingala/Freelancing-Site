@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule, Routes } from '@angular/router';
+import { ExtraOptions, RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './components/home/home.component';
 import { SiteLayoutComponent } from './_layout/site-layout/site-layout.component';
 import { AccountLayoutComponent } from './_layout/account-layout/account-layout.component';
@@ -21,6 +21,13 @@ import { FindJobProjectHeaderComponent } from './_layout/find-job-project-header
 import { FindJobProjectDescComponent } from './components/find-job-project-desc/find-job-project-desc.component';
 import { FindJobProjectProposalsComponent } from './components/find-job-project-proposals/find-job-project-proposals.component';
 import { FreelancerProjectsComponent } from './components/freelancer-projects/freelancer-projects.component';
+
+const routerOptions: ExtraOptions = {
+  scrollPositionRestoration: 'enabled',
+  anchorScrolling: 'enabled',
+  scrollOffset: [0, 64],
+};
+
 const route:Routes=[
   //site routes goes here
   {
@@ -62,7 +69,7 @@ const route:Routes=[
   declarations: [],
   imports: [
     CommonModule,
-    RouterModule.forRoot(route)
+    RouterModule.forRoot(route,routerOptions)
   ],
   exports:[
     RouterModule
