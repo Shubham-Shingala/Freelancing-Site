@@ -23,6 +23,9 @@
                 <div class="text-danger" *ngIf="projectName?.errors?.required">
                   Project Name is required.
                 </div>
+                <div class="text-danger" *ngIf="projectName?.errors?.minlength">
+                  Please enter at least 10 characters. 
+                </div>
               </div>
             </div>
             <div>
@@ -41,6 +44,9 @@
               >
                 <div class="text-danger" *ngIf="description?.errors?.required">
                   Description is required.
+                </div>
+                <div class="text-danger" *ngIf="description?.errors?.minlength">
+                  Please enter at least 30 characters. 
                 </div>
               </div>
             </div>

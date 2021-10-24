@@ -5,6 +5,7 @@ import {AuthService} from '../../services/auth.service';
 import { v4 as uuidv4 } from 'uuid';
 import { HttpClient, HttpEventType } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-profile',
@@ -37,7 +38,7 @@ export class ProfileComponent implements OnInit {
   educationForm!:FormGroup;
   profileForm!:FormGroup;
   categoryForm!:FormGroup;
-  constructor(private router:Router,private authService:AuthService,private http:HttpClient) { }
+  constructor(private title:Title,private router:Router,private authService:AuthService,private http:HttpClient) { }
 
   ngOnInit(): void {
     this.authService.loggedUser().subscribe(
@@ -61,6 +62,7 @@ export class ProfileComponent implements OnInit {
         this.imageUrl="../../../assets/uploads/"+res.data.profileImg;
         this.category=res.data.Category;
         this.userRole=res.data.Role;
+        this.title.setTitle("Update your Profile - "+res.data.Email);
       }
       }
     )

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
 import { ProjectService } from 'src/app/services/project.service';
 
@@ -11,7 +12,8 @@ export class FindJobProjectHeaderComponent implements OnInit {
   public id!:string | null;
   public project:any;
   public error:string | null=null;
-  constructor(private route:ActivatedRoute,private projectService:ProjectService) { }
+  constructor(private title:Title,private route:ActivatedRoute,private projectService:ProjectService) { 
+  }
 
   ngOnInit(): void {
     this.id = this.route.snapshot.paramMap.get('id')

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 import { ProjectService } from 'src/app/services/project.service';
@@ -11,7 +12,10 @@ import { ProjectService } from 'src/app/services/project.service';
 export class FindJobComponent implements OnInit {
   public projectList!:any[];
   public error:string | null=null;
-  constructor(private authService:AuthService,private router:Router,private projectService:ProjectService) { }
+  constructor(private title:Title,private authService:AuthService,private router:Router,private projectService:ProjectService) { 
+    title.setTitle("Find Freelance Jobs | freelancing sit");
+  }
+
 
   ngOnInit(): void {
     this.getAllProject();

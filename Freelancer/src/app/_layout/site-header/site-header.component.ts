@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 import { ProjectService } from 'src/app/services/project.service';
@@ -13,7 +14,9 @@ export class SiteHeaderComponent implements OnInit {
   public loggedUserName:string |null =null;
   public loggedUserFreelancer:boolean = false;
   public numberOfProject!:number;
-  constructor(private router:Router,private authService:AuthService,private projectService:ProjectService) { }
+  constructor(private title:Title,private router:Router,private authService:AuthService,private projectService:ProjectService) { 
+
+  }
 
   ngOnInit(): void {
     this.loggedUser=this.authService.isloggedUser();
@@ -26,6 +29,11 @@ export class SiteHeaderComponent implements OnInit {
            this.loggedUserName=res.data.FirstName;
            if(res.data.Role == "freelancer") {
               this.loggedUserFreelancer = true;
+              this.title.setTitle("Find Freelance Jobs Online | Freelancing site")
+           }
+           else{
+    this.title.setTitle("Hire Freelancer | Freelancing site")
+
            }
             this.projectService.getProjectsOfUser(res.data._id).subscribe(
               (res: any) => {

@@ -8,6 +8,7 @@ import { HttpClient, HttpEventType } from '@angular/common/http';
 import {finalize} from 'rxjs/operators';
 import { v4 as uuidv4 } from 'uuid';
 import { AuthService } from 'src/app/services/auth.service';
+import { Title } from '@angular/platform-browser';
 
 
 @Component({
@@ -26,7 +27,7 @@ export class PostProjectComponent implements OnInit {
 
   public panel1: boolean = false;
   public panel2: boolean = false;
-  constructor(private authService:AuthService,private http:HttpClient,private router: Router, private projectService: ProjectService) { }
+  constructor(private title:Title,private authService:AuthService,private http:HttpClient,private router: Router, private projectService: ProjectService) { }
 
   ngOnInit(): void {
     this.authService.loggedUser().subscribe(
@@ -34,11 +35,13 @@ export class PostProjectComponent implements OnInit {
         if(res.status=='ok' && res.data.Role=='freelancer'){
           this.router.navigateByUrl('/')
         }
+        this.title.setTitle("Post a job - "+res.data.Email+" | freelancing site");
       }
     )
+
     this.PostProjectForm = new FormGroup({
-      projectNameControl: new FormControl("", Validators.required),
-      descriptionControl: new FormControl("", Validators.required),
+      projectNameControl: new FormControl("", [Validators.required,Validators.minLength(10)]),
+      descriptionControl: new FormControl("", [Validators.required,Validators.minLength(30)]),
       fileControl: new FormControl(),
       categoryControl: new FormControl("", Validators.required),
       MaxBudgetControl: new FormControl("", Validators.required),

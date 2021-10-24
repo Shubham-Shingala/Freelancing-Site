@@ -78,8 +78,8 @@
           <span *ngIf="category !='none'">{{ category }}</span>
           <span *ngIf="category == 'none'">Add your Category</span>
           <form *ngIf="showCat" [formGroup]="categoryForm">
-            <select class="form-control" formControlName="categoryControl">
-              <option value="none">None</option>
+            <select class="form-select" formControlName="categoryControl">
+              <option value="">None</option>
               <option value="Development & It">Development & It</option>
               <option value="Design & Creative">Design & Creative</option>
               <option value="Sales & Marketing">Sales & Marketing</option>
@@ -128,11 +128,11 @@
             {{ userYearOfGraduation }}
           </span>
           <form *ngIf="showEdu" [formGroup]="educationForm">
-            <select class="country form-control">
-              <option value="0" class="hidden">
+            <select formControlName="collegeCountryControl" class="country form-select">
+              <option value="" >
                 Country of College/University
               </option>
-              <option formControlName="collegeCountryControl" value="India">
+              <option  value="India">
                 India
               </option>
             </select>
@@ -144,8 +144,8 @@
               class="form-control"
             />
             <br />
-            <select class="form-control" formControlName="degreeControl">
-              <option value="" class="hidden">Degree</option>
+            <select class="form-select" formControlName="degreeControl">
+              <option value="">Degree</option>
               <option value="associate">Associate</option>
               <option value="certificate">Certificate</option>
               <option value="ba">B.A.</option>
@@ -173,8 +173,8 @@
               class="form-control"
             />
             <br>
-            <select class="form-control" formControlName="yearControl">
-              <option value="" class="hidden">Year of graduation</option>
+            <select class="form-select" formControlName="yearControl">
+              <option value="">Year of graduation</option>
               <option value="2021">2021</option>
               <option value="2020">2020</option>
               <option value="2019">2019</option>
@@ -244,8 +244,8 @@
               class="form-control"
             />
             <br />
-            <select class="form-control" formControlName="certificateYearControl">
-              <option value="" class="hidden">Year</option>
+            <select class="form-select" formControlName="certificateYearControl">
+              <option value="">Year</option>
               <option value="2021">2021</option>
               <option value="2020">2020</option>
               <option value="2019">2019</option>

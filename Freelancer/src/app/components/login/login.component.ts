@@ -1,6 +1,7 @@
 import { HttpResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { IUser } from 'src/app/models/IUser';
 import { AuthService } from 'src/app/services/auth.service';
@@ -16,7 +17,9 @@ export class LoginComponent implements OnInit {
   RegexEmail:string="[A-Za-z0-9._%-]+@[A-Za-z0-9._%-]+\\.[a-z]{2,3}";
   passwordRegex="^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$";
   public errorMessage!:string |null;
-  constructor(private router:Router,private authService:AuthService) { }
+  constructor(private title:Title,private router:Router,private authService:AuthService) {
+    title.setTitle("Login to Hire Freelancer or Find work");
+   }
 
   ngOnInit(): void {
     if(this.authService.isloggedUser())

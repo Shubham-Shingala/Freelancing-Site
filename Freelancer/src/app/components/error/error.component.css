@@ -1,0 +1,13 @@
+.errorClass{
+    width:90%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.alert-danger{
+    border-radius: 5px;
+    padding: 20px;
+}
+.alert-danger h1{
+    font-weight: bold;
+}

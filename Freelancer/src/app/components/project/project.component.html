@@ -1,5 +1,7 @@
 <div class="rootOfPage">
   <div class="container">
+    <h1>{{error}}</h1>
+    <a *ngIf="error" [routerLink]="['/post-project']" class="btn btn-primary">Post Project</a>
     <div
       (click)="cardClick(project._id)"
       *ngFor="let project of projectList"

@@ -163,7 +163,9 @@ route.get('/findProjectsOfUser/:userId',(req,res,next)=>
 
 //get all hired or completed projects of user
 route.get('/getAllHiredProject/:id',(req,res)=>{
-    project.find({$or:[{Status:'Hired'},{Status:'completed'}],hiredUser:req.params.id},(err,data)=>{
+    project.find({$or:[{Status:'Hired'},{Status:'completed'}],hiredUser:req.params.id})
+    .populate('_User')
+    .exec((err,data)=>{
         if(err){
             console.log(err);
         }

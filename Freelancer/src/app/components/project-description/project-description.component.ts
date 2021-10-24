@@ -7,6 +7,7 @@ import { AuthService } from 'src/app/services/auth.service';
 import { BidService } from 'src/app/services/bid.service';
 import { ProjectService } from 'src/app/services/project.service';
 import * as fileSaver from 'file-saver';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-project-description',
@@ -17,7 +18,7 @@ export class ProjectDescriptionComponent implements OnInit {
   id!:string | null;
   public project!:IProject;
   public fileName!:string;
-  constructor(private router:Router,private authService:AuthService,private bidService:BidService,private route:ActivatedRoute,private projectService:ProjectService) { }
+  constructor(private title:Title,private router:Router,private authService:AuthService,private bidService:BidService,private route:ActivatedRoute,private projectService:ProjectService) { }
 
   ngOnInit(): void {
     this.id = this.route.parent?.snapshot.params['id'];
@@ -32,6 +33,7 @@ export class ProjectDescriptionComponent implements OnInit {
       (res:any)=>{
         if(res.status=='ok'){
           this.project=res.data;
+          this.title.setTitle(res.data.Name);
           if(this.project.FilePath!=null)
             this.fileName=this.project.FilePath.substring(this.project.FilePath.indexOf("_") + 1);
         }

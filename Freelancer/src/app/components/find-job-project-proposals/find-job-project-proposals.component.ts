@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 import { BidService } from 'src/app/services/bid.service';
@@ -14,7 +15,7 @@ export class FindJobProjectProposalsComponent implements OnInit {
   public bids!:any[];
   public error:string | null=null;
   public hiredProject:boolean=false;
-  constructor(private authService:AuthService,private router:Router,private projectService:ProjectService,private route:ActivatedRoute,private bidService:BidService) { }
+  constructor(private title:Title,private authService:AuthService,private router:Router,private projectService:ProjectService,private route:ActivatedRoute,private bidService:BidService) { }
 
   ngOnInit(): void {
     this.id = this.route.parent?.snapshot.params['id'];
@@ -34,6 +35,7 @@ export class FindJobProjectProposalsComponent implements OnInit {
       (res:any)=>{
         if(res.status=='ok' && (res.data.Status=='Hired' || res.data.Status=='completed')){
           this.hiredProject=true;
+          this.title.setTitle(res.data.Name);
           this.bidService.getBidOfHiredProject(this.id).subscribe(
             (res:any)=>{
               if(res.status=='ok'){

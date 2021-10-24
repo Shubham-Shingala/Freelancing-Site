@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { IUser } from 'src/app/models/IUser';
 import { AuthService } from 'src/app/services/auth.service';
@@ -15,7 +16,10 @@ export class RegisterDetailsComponent implements OnInit {
   public hide:boolean=true;
   passwordRegex="^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$";
   public errorMessage!:string |null;
-  constructor(private router:Router,private authService:AuthService) { }
+  constructor(private title:Title,private router:Router,private authService:AuthService) {
+    title.setTitle("Register to Hire Freelancer or Find Jobs Online");
+
+   }
 
   ngOnInit(): void {
     if(history.state.data==null){

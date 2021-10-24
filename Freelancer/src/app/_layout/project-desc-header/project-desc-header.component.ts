@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { IProject } from 'src/app/models/IProject';
 import { ProjectService } from 'src/app/services/project.service';
@@ -11,7 +12,8 @@ import { ProjectService } from 'src/app/services/project.service';
 export class ProjectDescHeaderComponent implements OnInit {
   id!:string | null;
   public project!:IProject;
-  constructor(private router:Router,private route:ActivatedRoute,private projectService:ProjectService) { }
+  constructor(private title:Title,private router:Router,private route:ActivatedRoute,private projectService:ProjectService) {
+   }
 
   ngOnInit(): void {
     this.id = this.route.snapshot.paramMap.get('id')
