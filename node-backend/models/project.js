@@ -16,7 +16,8 @@ let Project=new schema({
     ProjectStartingTime:{type:Date},
     ProjectPostTime:{type:Date},
     NumberOfBids:{type:Number,default:0},
-    hiredUser:{type:schema.Types.ObjectId,ref:'user'}
+    hiredUser:{type:schema.Types.ObjectId,ref:'user'},
+    completedWorkFile:{type:String}
 },{
     collection:"projects"
 })

@@ -280,6 +280,18 @@
             </button>
           </form>
         </div>
+        <!-- <br />
+        <hr />
+        <br />
+        <div class="rating-list">
+        <div class="row">
+          <div class="col-sm-12">
+              <ul class="list-inline rating-list" *ngFor="let star of stars; let i= index" style="display: inline-block" >
+                  <li id="{{'starId'+i}}" [ngClass]="{'selected': (star <= selectedValue)}" (click)="countStar(star)" (mouseover)="addClass(star)" (mouseout)="removeClass(star)"><i   class="fa fa-star fa-lg"></i></li> 
+              </ul>
+          </div>
+        </div>
+        </div> -->
         </section>
       </div>
     </div>

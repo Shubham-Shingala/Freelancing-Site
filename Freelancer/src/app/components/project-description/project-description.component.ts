@@ -18,6 +18,7 @@ export class ProjectDescriptionComponent implements OnInit {
   id!:string | null;
   public project!:IProject;
   public fileName!:string;
+  public workFile?:string;
   constructor(private title:Title,private router:Router,private authService:AuthService,private bidService:BidService,private route:ActivatedRoute,private projectService:ProjectService) { }
 
   ngOnInit(): void {
@@ -33,9 +34,13 @@ export class ProjectDescriptionComponent implements OnInit {
       (res:any)=>{
         if(res.status=='ok'){
           this.project=res.data;
+          
           this.title.setTitle(res.data.Name);
           if(this.project.FilePath!=null)
             this.fileName=this.project.FilePath.substring(this.project.FilePath.indexOf("_") + 1);
+          if(this.project.Status=='completed'){
+            this.workFile=this.project.completedWorkFile?.substring(this.project.completedWorkFile.indexOf("_")+1);
+          }
         }
       }
     )
@@ -48,6 +53,15 @@ export class ProjectDescriptionComponent implements OnInit {
 			fileSaver.saveAs(blob,this.fileName);
 		}, 
     (error: any) => console.log('Error downloading the file')
+    )
+  }
+  downloadWorkFile(){
+    this.projectService.downloadWorkFile(this.id).subscribe(
+      (response: any) => { 
+        let blob:any = new Blob([response], { type: 'application/octet-stream' });
+        fileSaver.saveAs(blob,this.workFile);
+      }, 
+      (error: any) => console.log('Error downloading the file')
     )
   }
 }

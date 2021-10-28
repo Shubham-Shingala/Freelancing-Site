@@ -10,5 +10,6 @@ export interface IProject{
     Duration:string,
     Status:string,
     ProjectPostTime:Date,
-    NumberOfBids:number
+    NumberOfBids:number,
+    completedWorkFile?:string
 }

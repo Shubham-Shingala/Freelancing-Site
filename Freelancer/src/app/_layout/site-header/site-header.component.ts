@@ -14,6 +14,7 @@ export class SiteHeaderComponent implements OnInit {
   public loggedUserName:string |null =null;
   public loggedUserFreelancer:boolean = false;
   public numberOfProject!:number;
+  public numberOfHiredProject!:number;
   constructor(private title:Title,private router:Router,private authService:AuthService,private projectService:ProjectService) { 
 
   }
@@ -40,6 +41,14 @@ export class SiteHeaderComponent implements OnInit {
                 if (res.status == 'ok') {
                   var projectList:any[] = res.data;
                   this.numberOfProject= projectList.length
+                }
+              }
+            )
+            this.projectService.getAllHiredProject(res.data._id).subscribe(
+              (res:any)=>{
+                if(res.status=='ok'){
+                  var projectList:any[]=res.data;
+                  this.numberOfHiredProject=projectList.length;
                 }
               }
             )

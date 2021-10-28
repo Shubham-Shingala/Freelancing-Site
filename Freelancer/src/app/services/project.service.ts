@@ -27,6 +27,12 @@ export class ProjectService {
     let url=`${this.baseUri}/read/`+id;
     return this.http.get(url);
   }
+
+  updateProject(id:string | null,obj:any){
+    let url=`${this.baseUri}/update/`+id;
+    return this.http.put(url,obj);
+  }
+
   updateBid(obj:any){
     let url=`${this.baseUri}/updateBid/`+obj.id;
     return this.http.post(url,obj);
@@ -43,6 +49,12 @@ export class ProjectService {
     let url=`${this.baseUri}/download/`+id;
     return this.http.get(url,{responseType: 'blob'});
   }
+
+  downloadWorkFile(id:string | null){
+    let url=`${this.baseUri}/downloadWorkFile/`+id;
+    return this.http.get(url,{responseType:'blob'});
+  }
+
   deleteProject(id:string | null){
     let url=`${this.baseUri}/delete/`+id;
     return this.http.delete(url);

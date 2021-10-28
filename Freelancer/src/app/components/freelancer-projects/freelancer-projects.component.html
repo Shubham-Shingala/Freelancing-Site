@@ -24,7 +24,7 @@
           <p class="desc">{{ project.Description }}</p>
           <h4 class="card-subtitle"><span class="cat-box">{{ project.Category }}</span></h4>
           <div class="bottomOfCard">
-            <button class="btn btn-success" (click)="completeProject(project._id)" title="if You completed this project then click this button."><b>{{project.Status}}</b></button
+            <button class="btn btn-success"><b>{{project.Status}}</b></button
             >&nbsp;&nbsp;
             <span
               ><i class="fas fa-gavel"></i>&nbsp;{{
@@ -32,7 +32,8 @@
               }}
               Bid&nbsp; &nbsp;</span
             >
-            <span> {{ project.Duration }} Days Duration</span>
+            <span> {{ project.Duration }} Days Duration</span>&nbsp;
+            <span>Author EmailId:&nbsp;{{project._User.Email}}</span>
           </div>
         </div>
       </div>

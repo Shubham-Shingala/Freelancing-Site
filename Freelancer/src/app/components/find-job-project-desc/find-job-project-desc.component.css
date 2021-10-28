@@ -78,3 +78,23 @@ mat-form-field {
     margin: auto;
     width: fit-content;
 }
+.file-input{
+    display: none;
+}
+
+.file-upload{
+    /* background-color: rgb(240, 239, 239); */
+    margin-top: 15px;
+    text-align: left;
+    margin-left: 10px;
+    font-weight: bold;
+}
+.cancel-upload{
+    display: inline-block;
+}
+.cancel-upload:hover{
+    cursor: pointer;
+}
+.uploadProgress{
+    display: inline-block;
+}

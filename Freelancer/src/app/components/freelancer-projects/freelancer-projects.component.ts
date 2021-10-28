@@ -51,17 +51,5 @@ export class FreelancerProjectsComponent implements OnInit {
   cardClick(id:string){
     this.router.navigate(["/findjobsProjects/",id,"Details"]);
   }
-  completeProject(id:string){
-    let obj:any={
-      status:'completed',
-      id:id
-    }
-    this.projectService.updateStatusOfProject(obj).subscribe(
-      (res:any)=>{
-        if(res.status=='ok'){
-          this.getHiredProject();
-        }
-      }
-    )
-  }
+  
 }

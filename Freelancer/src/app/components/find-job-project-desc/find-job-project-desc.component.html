@@ -15,23 +15,22 @@
     <div class="projectCategory">{{project?.Category}}</div>
     <span *ngIf="fileName" class="projectCategoryLabel">Attached Document</span><br>
     <a (click)=download() class="link-primary fileLink">{{fileName}}</a>
+    <span *ngIf="workFile" class="projectCategoryLabel">Submitted Work</span><br>
+    <a (click)=downloadWorkFile() class="link-primary fileLink">{{workFile}}</a>
   </div>
 </div>
-
 
 
 <div id="bidSection" *ngIf="project.Status=='pending'" class="card shadow p-3 mb-5 bg-white rounded">
   <div class="card-body">
     <span class="card-title">Place a Bid on this Project</span>
     <hr>
-    <!-- <div class="bidDetails">Bid Details</div> -->
     <form [formGroup]="bidForm">
       <div class="bidFormInput">
 
         <div class="bid-amount">
           <mat-form-field appearance="standard" floatLabel="always">
             <mat-label class="form-label"><b>Bid Amount</b></mat-label>
-            <!-- <mat-label></mat-label> -->
             <input matInput type="number" formControlName="bidAmountControl" placeholder="Enter Bid Amount">
             <span matPrefix>₹&nbsp;</span>
             <mat-error *ngIf="bidAmount?.hasError('required')">
@@ -68,6 +67,58 @@
         <div class="btn-bid"> <button class="btn btn-primary" (click)="placeBid()" mat-raised-button
             color="primary">Place Bid</button>
         </div>
+      </div>
+    </form>
+  </div>
+</div>
+<div id="deliverSection" *ngIf="project.Status=='Hired'" class="card shadow p-3 mb-5 bg-white rounded">
+  <div class="card-body">
+    <span class="card-title">Submit Your Work</span>
+    <hr>
+    <form [formGroup]="workForm">
+      <div>
+        <input
+          type="file"
+          class="file-input"
+          formControlName="fileControl"
+          (change)="onFileSelected($event)"
+          #fileUpload
+        />
+
+        <div class="file-upload">
+          {{ fileName1 || "No file uploaded yet." }}
+
+          <button
+            mat-mini-fab
+            color="primary"
+            class=""
+            (click)="fileUpload.click()"
+          >
+            <mat-icon>attach_file</mat-icon>
+          </button>
+        </div>
+        <div>
+          <mat-progress-bar
+            class="uploadProgress"
+            mode="determinate"
+            [value]="uploadProgress"
+            *ngIf="uploadProgress"
+          >
+          </mat-progress-bar>
+
+          <mat-icon
+            class="cancel-upload"
+            (click)="cancelUpload()"
+            *ngIf="uploadProgress"
+            >close</mat-icon
+          >
+        </div>
+        <mat-error *ngIf="fileControl?.hasError('required') && fileControl?.touched">
+          Please attach file
+        </mat-error>
+        <div class="btn-bid"> <button class="btn btn-primary" (click)="submitWork()" mat-raised-button
+          color="primary">Submit work</button>
+      </div>
       </div>
     </form>
   </div>

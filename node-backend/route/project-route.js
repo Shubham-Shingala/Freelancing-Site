@@ -79,6 +79,20 @@ route.get('/download/:id',(req,res)=>{
     })
 })
 
+//download work submitted file
+route.get('/downloadWorkFile/:id',(req,res)=>{
+    project.findById(req.params.id,(err,data)=>{
+        if(err){
+            console.log(err);
+        }
+        if(data){
+            const file=path.join(__dirname,'/uploads/')+data.completedWorkFile;
+            return res.download(file);
+        }
+    })
+})
+
+
 //update project status and bid status
 route.post('/updateProjectStatus/:id',(req,res)=>{
     project.findByIdAndUpdate(req.params.id,{

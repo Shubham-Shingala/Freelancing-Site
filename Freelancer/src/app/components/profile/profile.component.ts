@@ -38,6 +38,8 @@ export class ProfileComponent implements OnInit {
   educationForm!:FormGroup;
   profileForm!:FormGroup;
   categoryForm!:FormGroup;
+  stars: number[] = [1, 2, 3, 4, 5];
+  selectedValue:number=0;
   constructor(private title:Title,private router:Router,private authService:AuthService,private http:HttpClient) { }
 
   ngOnInit(): void {
@@ -198,4 +200,22 @@ export class ProfileComponent implements OnInit {
     }
 
   }
+//   countStar(star:number) {
+//     this.selectedValue=star;
+//     console.log('Value of star', star);
+//   }
+//   addClass(star:number) {
+//     let ab = "";
+//     for (let i = 0; i < star; i++) {
+//       ab = "starId" + i;
+//       document?.getElementById(ab)?.classList.add("selected");
+//     }
+//  }
+//  removeClass(star:number) {
+//     let ab = "";
+//    for (let i = star-1; i >= this.selectedValue; i--) {
+//       ab = "starId" + i;
+//       document?.getElementById(ab)?.classList.remove("selected");
+//     }
+//  }
 }

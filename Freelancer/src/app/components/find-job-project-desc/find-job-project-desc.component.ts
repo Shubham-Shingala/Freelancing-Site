@@ -8,6 +8,11 @@ import { BidService } from 'src/app/services/bid.service';
 import { ProjectService } from 'src/app/services/project.service';
 import * as fileSaver from 'file-saver';
 import { Title } from '@angular/platform-browser';
+import { Subscription } from 'rxjs';
+import { v4 as uuidv4 } from 'uuid';
+import { HttpClient, HttpEventType } from '@angular/common/http';
+import { finalize } from 'rxjs/operators';
+
 
 
 @Component({
@@ -22,7 +27,17 @@ export class FindJobProjectDescComponent implements OnInit {
   userId!:string;
   numberOfBid!:number;
   public fileName!:string;
-  constructor(private title:Title,private router:Router,private authService:AuthService,private bidService:BidService,private route:ActivatedRoute,private projectService:ProjectService) { }
+
+  FileToUpload!: any;
+  fileName1: string = "";
+  uploadProgress!: number | null;
+  uploadSub!: Subscription | null;
+  baseUri:string="http://localhost:4000/api";
+  uniqueFileName!:string;
+  workForm!:FormGroup;
+  public workFile!:string;
+
+  constructor(private http:HttpClient,private title:Title,private router:Router,private authService:AuthService,private bidService:BidService,private route:ActivatedRoute,private projectService:ProjectService) { }
 
   ngOnInit(): void {
     this.id = this.route.parent?.snapshot.params['id'];
@@ -40,6 +55,9 @@ export class FindJobProjectDescComponent implements OnInit {
           this.title.setTitle(this.project.Name);
           if(this.project.FilePath!=null)
           this.fileName=this.project.FilePath.substring(this.project.FilePath.indexOf("_") + 1);        }
+          if(this.project.Status=='completed'){
+            this.workFile=this.project.completedWorkFile?.substring(this.project.completedWorkFile.indexOf("_")+1);
+          }
       }
     )
 
@@ -56,7 +74,15 @@ export class FindJobProjectDescComponent implements OnInit {
       daysControl:new FormControl("",[Validators.required,Validators.min(1)]),
       proposalControl:new FormControl("",Validators.required)
     })
+    this.workForm=new FormGroup({
+      fileControl:new FormControl("",Validators.required)
+    })
   }
+
+  get fileControl(){
+    return this.workForm.get('fileControl');
+  }
+
   get bidAmount(){
     return this.bidForm.get('bidAmountControl');
   }
@@ -112,5 +138,70 @@ export class FindJobProjectDescComponent implements OnInit {
       }
     )
     }
+  }
+
+  reset() {
+    this.uploadProgress = null;
+    this.uploadSub = null;
+
+  }
+
+  onFileSelected(event: any) {
+    const file: File = event.target.files[0];
+    
+    if (file) {
+      this.uniqueFileName=uuidv4()+"_"+file.name;
+      const formData = new FormData();
+      formData.append("file", file,this.uniqueFileName);
+      const upload$ = this.http.post(`${this.baseUri}/projectUpload`, formData, {
+        reportProgress: true,
+        observe: 'events'
+      }).pipe(finalize(()=>this.reset()))
+
+      this.uploadSub = upload$.subscribe(event =>{
+        if (event.type == HttpEventType.UploadProgress) {
+          if(event.total)
+          this.uploadProgress = Math.round(100 * (event.loaded /event.total));
+        }else if (event.type === HttpEventType.Response) {
+          this.fileName1 = file.name;
+          this.reset();
+        }
+      },)
+    }
+
+  }
+  
+
+  cancelUpload() {
+    this.uploadSub?.unsubscribe();
+    this.reset();
+  }
+
+  submitWork(){
+    this.workForm.markAllAsTouched();
+    if(this.workForm.valid){
+      this.workFile=this.fileName1;
+      this.project.Status='completed'
+      let obj:any={
+        completedWorkFile:this.uniqueFileName,
+        Status:'completed'
+      }
+      this.projectService.updateProject(this.id,obj).subscribe(
+        (res:any)=>{
+          if(res.status=='ok'){
+            console.log("hello");
+          }
+        }
+      )
+    }
+  }
+  downloadWorkFile(){
+    this.projectService.downloadWorkFile(this.id).subscribe(
+      (response: any) => { 
+        let blob:any = new Blob([response], { type: 'application/octet-stream' });
+        fileSaver.saveAs(blob,this.workFile);
+      }, 
+      (error: any) => console.log('Error downloading the file')
+    )
   }
 }
