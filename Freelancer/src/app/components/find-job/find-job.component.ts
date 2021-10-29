@@ -25,6 +25,8 @@ export class FindJobComponent implements OnInit {
     
   }
   getAllProject(){
+    this.error=null;
+    this.projectList=[];
     this.authService.loggedUser().subscribe(
       (res:any)=>{
         if(res.status=='ok' && res.data.Role=='buyer'){

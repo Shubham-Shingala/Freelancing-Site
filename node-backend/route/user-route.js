@@ -24,31 +24,46 @@ route.post("/register", (req, res, next) => {
     if(!Obj.Email){
         return res.json({status:'error',error:'email required'})
     }
-    const ps = bcrypt.hash(Obj.Password, 10, (err, pass) => {
-        if (err) {
-            return next(err);
+    //check email already taken?
+    user.find({Email:req.body.Email},(err,data)=>{
+        if(err){
+            console.log(err);
         }
-        user.create({
-            Email: Obj.Email,
-            FirstName: Obj.FirstName,
-            LastName: Obj.LastName,
-            Password: pass,
-            Role: Obj.Role,
-            profileImg:Obj.profileImg
-        }, (err, data) => {
-            if(err){
-                if (err.code==11000) {
-                    // console.log(Obj.Email);
-                    return res.json({status:'error',error:'email already in use'});
+        if(data.length!=0){
+            return res.json({status:'error',error:'email already taken'});
+        }
+        else{
+            const ps = bcrypt.hash(Obj.Password, 10, (err, pass) => {
+                if (err) {
+                    return next(err);
                 }
-                else
-                return next(err);
-            }
-            else
-            return res.json({status:'ok'})
-        })
-    });
-
+                user.create({
+                    Email: Obj.Email,
+                    FirstName: Obj.FirstName,
+                    LastName: Obj.LastName,
+                    Password: pass,
+                    Role: Obj.Role,
+                    profileImg:Obj.profileImg
+                }, (err, data) => {
+                    if(err){
+                        //using index email validate
+                        // if (err.code==11000) {
+                        //     // console.log(Obj.Email);
+                        //     return res.json({status:'error',error:'email already in use'});
+                        // }
+                        // else
+                        return next(err);
+                    }
+                    else
+                    {
+                        return res.json({status:'ok'})
+                    }
+                })
+            });
+        
+        }
+    })
+    
 })
 
 route.post('/login',(req,res)=>{

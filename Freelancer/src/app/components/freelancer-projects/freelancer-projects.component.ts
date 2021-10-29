@@ -23,6 +23,8 @@ export class FreelancerProjectsComponent implements OnInit {
   }
 
   getHiredProject(){
+    this.error=null;
+    this.projectList=[];
     this.authService.loggedUser().subscribe(
       (res:any)=>{
         if(res.status=='ok'){
