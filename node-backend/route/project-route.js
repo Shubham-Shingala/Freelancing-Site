@@ -145,9 +145,9 @@ route.put('/update/:id', (req, res, next) => {
     })
 })
 
-// Delete employee
+// Delete project
 route.delete('/delete/:id', (req, res, next) => {
-    project.findOneAndRemove(req.params.id, (error, data) => {
+    project.findByIdAndRemove(req.params.id, (error, data) => {
         if (error) {
             console.log(err);
         } else {

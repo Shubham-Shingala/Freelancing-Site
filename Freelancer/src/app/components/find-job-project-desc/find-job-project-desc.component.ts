@@ -41,13 +41,6 @@ export class FindJobProjectDescComponent implements OnInit {
 
   ngOnInit(): void {
     this.id = this.route.parent?.snapshot.params['id'];
-    this.authService.loggedUser().subscribe(
-      (res:any)=>{
-        if(res.status=='ok' && res.data.Role=='buyer'){
-          this.router.navigateByUrl('/');
-        }
-      }
-    )
     this.projectService.getOneProject(this.id).subscribe(
       (res:any)=>{
         if(res.status=='ok'){
@@ -189,7 +182,7 @@ export class FindJobProjectDescComponent implements OnInit {
       this.projectService.updateProject(this.id,obj).subscribe(
         (res:any)=>{
           if(res.status=='ok'){
-            console.log("hello");
+            // console.log("hello");
           }
         }
       )

@@ -32,9 +32,6 @@ export class PostProjectComponent implements OnInit {
   ngOnInit(): void {
     this.authService.loggedUser().subscribe(
       (res:any)=>{
-        if(res.status=='ok' && res.data.Role=='freelancer'){
-          this.router.navigateByUrl('/')
-        }
         this.title.setTitle("Post a job - "+res.data.Email+" | freelancing site");
       }
     )

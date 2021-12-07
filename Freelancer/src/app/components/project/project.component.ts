@@ -25,13 +25,6 @@ export class ProjectComponent implements OnInit {
   ngOnInit(): void {
     if (this.authService.isloggedUser()) {
       this.authService.loggedUser().subscribe(
-        (res:any)=>{
-          if(res.status=='ok' && res.data.Role=='freelancer'){
-            this.router.navigateByUrl('/')
-          }
-        }
-      )
-      this.authService.loggedUser().subscribe(
         (res: any) => {
           if (res.status == 'ok') {
             this.projectService.getProjectsOfUser(res.data._id).subscribe(

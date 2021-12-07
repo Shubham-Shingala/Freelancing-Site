@@ -36,6 +36,11 @@ import { FindJobProjectDescComponent } from './components/find-job-project-desc/
 import { FindJobProjectHeaderComponent } from './_layout/find-job-project-header/find-job-project-header.component';
 import { FindJobProjectProposalsComponent } from './components/find-job-project-proposals/find-job-project-proposals.component';
 import { FreelancerProjectsComponent } from './components/freelancer-projects/freelancer-projects.component';
+import { JwtModule} from '@auth0/angular-jwt';
+
+function tokenGetter(){
+  return localStorage.getItem('token');
+}
 
 
 @NgModule({
@@ -78,7 +83,12 @@ import { FreelancerProjectsComponent } from './components/freelancer-projects/fr
     MatFormFieldModule,
     MatRadioModule,
     MatButtonModule,
-    MatBadgeModule
+    MatBadgeModule,
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: tokenGetter
+      },
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]

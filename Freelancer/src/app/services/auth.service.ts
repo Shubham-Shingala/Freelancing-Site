@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable, OnInit } from '@angular/core';
 import { map } from 'rxjs/operators';
 import { IUser } from '../models/IUser';
+import { JwtHelperService } from '@auth0/angular-jwt';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,7 @@ export class AuthService {
   baseUri:string="http://localhost:4000/user";
   public roleAs!:string;
   public roleIsFreelancer!:boolean;
-  constructor(private http:HttpClient) {  
+  constructor(private http:HttpClient,private jwtHelper:JwtHelperService) {  
   }
   registerUser(user:IUser){
     let url=`${this.baseUri}/register`;
@@ -21,11 +22,12 @@ export class AuthService {
     return this.http.post(url,user);
   }
   isloggedUser(){
-    var token=localStorage.getItem('token');
-    if(token==null)
-    return false;
+    const token=localStorage.getItem('token');
+    if(token !=null)
+    return !this.jwtHelper.isTokenExpired(token);
     else
-    return true;
+    return false;
+    
   }
   loggedUser(){
     var token=localStorage.getItem('token');

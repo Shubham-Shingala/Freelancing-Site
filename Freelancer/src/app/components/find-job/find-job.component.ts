@@ -29,9 +29,6 @@ export class FindJobComponent implements OnInit {
     this.projectList=[];
     this.authService.loggedUser().subscribe(
       (res:any)=>{
-        if(res.status=='ok' && res.data.Role=='buyer'){
-          this.router.navigateByUrl('/')
-        }
         if(res.status=='ok'){
           if(res.data.Category=='none'){
             this.projectService.getAllProject().subscribe(

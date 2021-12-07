@@ -79,8 +79,8 @@ route.post('/login',(req,res)=>{
                 if(flag){
                     const token=jwt.sign({
                         id:data._id,
-                        // Email:data.Email,
-                        // Role:data.Role
+                        email:data.Email,
+                        role:data.Role
                     },config.TOKEN_SECRET)
                     return res.json({status:'ok',data:token})
                 }

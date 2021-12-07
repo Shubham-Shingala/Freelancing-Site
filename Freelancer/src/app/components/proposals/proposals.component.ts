@@ -20,14 +20,6 @@ export class ProposalsComponent implements OnInit {
 
   ngOnInit(): void {
     this.id = this.route.parent?.snapshot.params['id'];
-    this.authService.loggedUser().subscribe(
-      (res:any)=>{
-        if(res.status=='ok' && res.data.Role=='freelancer'){
-          this.router.navigateByUrl('/')
-        }
-      }
-    )
-    
       this.getAllBids();
     
   }
