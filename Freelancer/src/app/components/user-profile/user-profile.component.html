@@ -1,0 +1,64 @@
+<div class="roofOfPage">
+    <div class="card shadow-lg p-3 mb-5 bg-white rounded">
+      <div class="imgBox">
+        <img [src]="imageUrl" class="card-img-top profileImg" />
+      </div>
+      <div class="card-body">
+        <h2 class="card-title">{{ username }}</h2>
+        <div class="card-text">
+          <div style="display: inline; font-weight: bold">Member Since:</div>
+          <div style="font-weight: bold; float: right; display: inline">
+            {{ registerUserDate }}
+          </div>
+          <br />
+          <hr />
+          <br />
+          <div style="display: inline;">
+            <span style="font-weight: bold">Description</span>
+          </div>
+          <div style="margin-top: 5px;">
+            {{ description }}
+          </div>
+          <section *ngIf="userRole=='freelancer'">
+          <br />
+          <hr />
+          <br />
+          <div style="display: inline">
+            <span style="font-weight: bold">Category</span>
+          </div>
+          <div style="margin-top: 5px;">
+            <span *ngIf="category !='none'">{{ category }}</span>
+          </div>
+          <br />
+          <hr />
+          <br />
+          <div style="display: inline">
+            <span style="font-weight: bold">Education</span>
+          </div>
+          <div style="margin-top: 5px;">
+            <span *ngIf="userDegree">{{ userDegree }} - {{ userBranch }}</span
+            ><br />
+            <span *ngIf="userCollege" style="font-weight: lighter"
+              >{{ userCollege }}, {{ userCollegeCountry }}, Graduated
+              {{ userYearOfGraduation }}
+            </span>
+          </div>
+          <br />
+          <hr />
+          <br />
+          <div style="display: inline">
+            <span style="font-weight: bold">Certification</span>
+          </div>
+          <div style="margin-top: 5px;">
+            {{ userCertificate }}<br />
+            <span style="font-weight: lighter">
+              {{ userCertificateFrom }} {{ userCertificateYear }}
+            </span>
+          </div>
+          </section>
+        </div>
+      </div>
+    </div>
+    
+  </div>
+  

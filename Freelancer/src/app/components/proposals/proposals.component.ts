@@ -73,5 +73,8 @@ export class ProposalsComponent implements OnInit {
       }
     )
   }
+  userProfileClick(userId:string){
+    this.router.navigate(['/userProfile',userId]);
+  }
 
 }

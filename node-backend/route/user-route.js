@@ -191,4 +191,15 @@ route.post('/addProfileImg',(req,res)=>{
     })
 })
 
+route.get('/getUser/:id',(req,res)=>{
+    user.findById(req.params.id,(err,data)=>{
+        if(err){
+            return res.json({status:'error'});
+        }
+        else{
+            return res.json({status:'ok',data:data});
+        }
+    })
+})
+
 module.exports = route;

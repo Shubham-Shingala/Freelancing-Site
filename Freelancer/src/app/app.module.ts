@@ -37,6 +37,7 @@ import { FindJobProjectHeaderComponent } from './_layout/find-job-project-header
 import { FindJobProjectProposalsComponent } from './components/find-job-project-proposals/find-job-project-proposals.component';
 import { FreelancerProjectsComponent } from './components/freelancer-projects/freelancer-projects.component';
 import { JwtModule} from '@auth0/angular-jwt';
+import { UserProfileComponent } from './components/user-profile/user-profile.component';
 
 function tokenGetter(){
   return localStorage.getItem('token');
@@ -68,7 +69,8 @@ function tokenGetter(){
     FindJobProjectDescComponent,
     FindJobProjectHeaderComponent,
     FindJobProjectProposalsComponent,
-    FreelancerProjectsComponent
+    FreelancerProjectsComponent,
+    UserProfileComponent
     ],
   imports: [
     BrowserModule,

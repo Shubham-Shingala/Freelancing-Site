@@ -9,7 +9,7 @@
         <div class="userImg">
           <img class="bidUserImg" [src]="'../../../assets/uploads/'+bid.BidUser.profileImg">
         </div>
-        <div class="user">
+        <div (click)="userProfileClick(bid.BidUser._id)" class="user">
           <span class="userName">&nbsp;&nbsp;{{bid.BidUser.FirstName}} {{bid.BidUser.LastName}}
           </span>
             <span class="userEmail">&nbsp;{{bid.BidUser.Email}}</span>

@@ -57,4 +57,8 @@ export class FindJobProjectProposalsComponent implements OnInit {
   placeBid(){
     this.router.navigate(['findjobsProjects',this.id,'Details']);
   }
+  userProfileClick(userId:string){
+    this.router.navigate(['/userProfile',userId]);
+  }
+
 }

@@ -24,6 +24,7 @@
 .user{
     display: inline-block;
     padding: 18px;
+    cursor: pointer;
 }
 
 .userName{

@@ -80,4 +80,9 @@ export class AuthService {
     let url=`${this.baseUri}/addCategory`;
     return this.http.post(url,data);
   }
+
+  getUser(id:string | null){
+    let url=`${this.baseUri}/getUser/`+id;
+    return this.http.get(url);
+  }
 }

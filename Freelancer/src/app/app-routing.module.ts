@@ -22,6 +22,7 @@ import { FindJobProjectDescComponent } from './components/find-job-project-desc/
 import { FindJobProjectProposalsComponent } from './components/find-job-project-proposals/find-job-project-proposals.component';
 import { FreelancerProjectsComponent } from './components/freelancer-projects/freelancer-projects.component';
 import { RoleGuard } from './guard/role.guard';
+import { UserProfileComponent } from './components/user-profile/user-profile.component';
 
 const routerOptions: ExtraOptions = {
   scrollPositionRestoration: 'enabled',
@@ -90,6 +91,10 @@ const route:Routes=[
         data:{
           expectedRole:'freelancer'
         }
+      },
+      {
+        path:'userProfile/:id',
+        component:UserProfileComponent
       }
     ],
     canActivate:[AuthGuard]
