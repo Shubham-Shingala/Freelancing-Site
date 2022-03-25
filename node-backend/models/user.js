@@ -1,8 +1,8 @@
 const mongoose = require('mongoose');
-const schema=mongoose.Schema;
+const {Schema}=mongoose;
 
-let User=new schema({
-    Email:{type:String,required:true,index: true,unique: true},
+let UserSchema=new Schema({
+    Email:{type:String,required:true,unique: true},
     FirstName:{type:String,required:true},
     LastName:{type:String,required:true},
     Password:{type:String,required:true},
@@ -19,7 +19,8 @@ let User=new schema({
     profileImg:{type:String},
     Category:{type:String,default:"none"},
     
-},{collation:"Users",timestamps: true});
+},{timestamps: true});
 
-
-module.exports=mongoose.model('user',User);
+const user=mongoose.model('user',UserSchema);
+user.createIndexes();
+module.exports=user;
